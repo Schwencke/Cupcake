@@ -18,7 +18,7 @@
             <h2>Our Cool Site</h2>
 
             <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
+                CUPCAKES GALOOORE
             </div>
 
             <c:if test="${sessionScope.role == 'employee' }">

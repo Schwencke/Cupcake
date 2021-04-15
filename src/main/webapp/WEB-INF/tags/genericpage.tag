@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
 </head>
-<body>
+<div class="container-fluid">
+    <div class="jumbotron-fluid bg-danger">
+
     <!--
         This header is inspired by this bootstrap
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
@@ -62,10 +64,13 @@
     </div>
     </c:if>
 </header>
+<div id="body" class="jumbotron-fluid" style="min-height: 20vh;">
 
-<div id="body" class="container" style="min-height: 20vh;">
+      <!--  <div id="body" class="container" style="min-height: 20vh;"> -->
     <jsp:doBody/>
 </div>
+
+
 
 <!-- Footer -->
 <div class="container">
@@ -74,6 +79,7 @@
     <br>
     <jsp:invoke fragment="footer"/>
 </div>
-
+</div>
+</div>
 </body>
 </html>
