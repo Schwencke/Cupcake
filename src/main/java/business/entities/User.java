@@ -1,58 +1,106 @@
 package business.entities;
 
-public class User
-{
-
-    public User(String email, String password, String role)
-    {
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-
-    private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private String email;
-    private String password; // Should be hashed and secured
+public class User {
+    private int userId;
+    private int roleId;
     private String role;
+    private String firstname;
+    private String lastname;
+    private String phoneNo;
+    private int balance;
+    private String email;
+    private String password;
 
-    public String getEmail()
-    {
-        return email;
+    public User() {
     }
 
-    public void setEmail(String email)
-    {
-        this.email = email;
+    // User creation constructor
+    public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email) {
+    }
+//delete this constructor!
+    public User(String email, String password, String customer) {
     }
 
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
-
-    public String getRole()
-    {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(String role)
-    {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public int getId()
-    {
-        return id;
+    public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email, String password) {
+        this.userId = userId;
+        this.roleId = roleId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNo = phoneNo;
+        this.balance = balance;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setId(int id)
-    {
-        this.id = id;
+    public int getUserId() {
+        return userId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
