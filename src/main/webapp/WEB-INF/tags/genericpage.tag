@@ -18,7 +18,8 @@
     <meta name="theme-color" content="#7952b3">
 </head>
 <div class="container-fluid">
-    <div class="jumbotron-fluid bg-danger">
+    <div class="jumbotron-fluid bg-light">
+        <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid">
 
     <!--
         This header is inspired by this bootstrap
