@@ -17,8 +17,11 @@ public class User {
     // User creation constructor
     public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email) {
     }
-//delete this constructor!
+//delete this constructor later! // cant remember where its used ;) - think its in testing
     public User(String email, String password, String customer) {
+    }
+    // User creation constructor for facade
+    public User(String firstname, String lastname, String phoneNo, String email, String password, String role) {
     }
 
     public String getRole() {

@@ -12,21 +12,38 @@
         <div style="margin-top: 5em;">
             <form name="login" action="${pageContext.request.contextPath}/fc/registercommand" method="POST">
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="email">Email</label>
+                    <label class="col-sm-1 col-form-label" for="firstname">Firstname</label>
                     <div class="col-sm-4">
-                        <input id="email" class="form-control" type="text" name="email" value="${param.email}" placeholder="Enter a valid email">
+                        <input id="firstname" class="form-control" type="text" name="firstname" required value="${param.firstname}" placeholder="Enter your firstname">
                     </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="lastname">Lastname</label>
+                    <div class="col-sm-4">
+                        <input id="lastname" class="form-control" type="text" name="lastname" required value="${param.lastname}" placeholder="Enter your lastname">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="phoneno">Phonenumber</label>
+                    <div class="col-sm-4">
+                        <input id="phoneno" class="form-control" type="text" name="phoneno" required value="${param.phoneno}" placeholder="Enter your phone number">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="email">Email</label>
+                    <div class="col-sm-4">
+                        <input id="email" class="form-control" type="email" name="email" required value="${param.email}" placeholder="Enter a valid email">
+                    </div>
+                </div>
+
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="password1">Password</label>
                     <div class="col-sm-4">
-                        <input id="password1" class="form-control" type="password" name="password1"  value="${param.password1}"  placeholder="Enter your password">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="password2">Password</label>
-                    <div class="col-sm-4">
-                        <input id="password2" class="form-control" type="password" name="password2" value="${param.password2}"  placeholder="Repeat the password">
+                        <input id="password1" class="form-control mb-2" type="password" name="password1" required value="${param.password1}"  placeholder="Enter your password">
+                        <input id="password2" class="form-control" type="password" name="password2" required value="${param.password2}"  placeholder="Repeat the password">
                     </div>
                 </div>
 

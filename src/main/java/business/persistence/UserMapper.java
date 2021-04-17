@@ -18,16 +18,21 @@ public class UserMapper {
             String sql = "INSERT INTO user (firstname, lastname, phone_no, email, password) VALUES (?, ?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setString(1, user.getEmail());
-                ps.setString(2, user.getPassword());
-                ps.setString(3, user.getRole());
+                ps.setString(1, user.getFirstname());
+                ps.setString(2, user.getLastname());
+                ps.setString(3, user.getPhoneNo());
+                ps.setString(4, user.getEmail());
+                ps.setString(5, user.getPassword());
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
-                int id = ids.getInt(1);
-                user.setUserId(id);
+                int userId = ids.getInt(1);
+                int roleId = ids.getInt(2);
+                user.setUserId(userId);
+                user.setRoleId(roleId);
+                user.setBalance(0);
             } catch (SQLException ex) {
-                throw new UserException(ex.getMessage());
+                throw new UserException("Emailen findes allerede");
             }
         } catch (SQLException ex) {
             throw new UserException(ex.getMessage());
