@@ -27,19 +27,33 @@ public class UserMapper {
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int userId = ids.getInt(1);
-                int roleId = ids.getInt(2);
                 user.setUserId(userId);
-                user.setRoleId(roleId);
-                user.setBalance(0);
-            } catch (SQLException ex) {
-                throw new UserException("Emailen findes allerede");
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-        } catch (SQLException ex) {
-            throw new UserException(ex.getMessage());
+
+            String sql2 = "SELECT role_id, balance FROM user WHERE user_id=?";
+            try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
+                ps2.setInt(1, user.getUserId());
+                ResultSet rs2 = ps2.executeQuery();
+                while (rs2.next()) {
+                    int roleId = rs2.getInt("role_id");
+                    int balance = rs2.getInt("balance");
+                    user.setRoleId(roleId);
+                    user.setBalance(balance);
+                }
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
-    public User login(String email, String password) throws UserException {
+            public User login(String email, String password) throws UserException {
 
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM user WHERE email=? AND password=?";
