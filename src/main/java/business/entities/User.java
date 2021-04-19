@@ -14,15 +14,6 @@ public class User {
     public User() {
     }
 
-    // User creation constructor
-    public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email) {
-    }
-//delete this constructor later! // cant remember where its used ;) - think its in testing
-    public User(String email, String password, String customer) {
-    }
-    // User creation constructor for facade
-    public User(String firstname, String lastname, String phoneNo, String email, String password, String role) {
-    }
 
     public String getRole() {
         return role;
@@ -39,6 +30,14 @@ public class User {
         this.lastname = lastname;
         this.phoneNo = phoneNo;
         this.balance = balance;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String firstname, String lastname, String phoneNo,  String email, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNo = phoneNo;
         this.email = email;
         this.password = password;
     }

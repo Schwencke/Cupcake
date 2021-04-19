@@ -1,13 +1,19 @@
 package web;
 
+import business.entities.Bottom;
+import business.entities.Topping;
 import business.exceptions.UserException;
+import business.persistence.CakeMapper;
 import business.persistence.Database;
 import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +45,28 @@ public class FrontController extends HttpServlet
         }
 
         // Initialize whatever global datastructures needed here:
+
+        CakeMapper cakeMapper = new CakeMapper(database);
+        ServletContext application=getServletContext();
+        List<Topping> toppinglist = new ArrayList<>();
+        try {
+            toppinglist = cakeMapper.getAllToppings();
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+        application.setAttribute("toppinglist",toppinglist);
+
+        List<Bottom> bottomlist = new ArrayList<>();
+        try {
+            bottomlist = cakeMapper.getAllBottoms();
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+        application.setAttribute("bottomlist",bottomlist);
+
+
+
+
 
     }
 
