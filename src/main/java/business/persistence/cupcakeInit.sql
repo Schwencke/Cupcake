@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `cupcake` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cupcake`;
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: cupcake
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.23-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,6 +36,7 @@ CREATE TABLE `bottom` (
 
 LOCK TABLES `bottom` WRITE;
 /*!40000 ALTER TABLE `bottom` DISABLE KEYS */;
+INSERT INTO `bottom` VALUES (1,'Chocolate',5),(2,'Vanilla',5),(3,'Nutmeg',5),(4,'Pistacio',6),(5,'Almond',7);
 /*!40000 ALTER TABLE `bottom` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,6 +120,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'customer'),(2,'employee');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,6 +168,7 @@ CREATE TABLE `topping` (
 
 LOCK TABLES `topping` WRITE;
 /*!40000 ALTER TABLE `topping` DISABLE KEYS */;
+INSERT INTO `topping` VALUES (1,'Chocolate',5),(2,'Blueberry',5),(3,'Rasberry',5),(4,'Crispy',6),(5,'Strawberry',6),(6,'Rum/raisin',7),(7,'Orange',8),(8,'Lemon',8),(9,'Blue cheese',9);
 /*!40000 ALTER TABLE `topping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,17 +181,18 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
-  `role_id` int NOT NULL,
+  `role_id` int NOT NULL DEFAULT '1',
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `phone_no` varchar(45) NOT NULL,
-  `balance` int NOT NULL,
+  `balance` int NOT NULL DEFAULT '0',
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_user_role1_idx` (`role_id`),
   CONSTRAINT `fk_user_role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,6 +201,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (4,1,'Thomas','Overgaard','60837082',100,'thomasovergaard@hotmail.com','1'),(5,1,'1','1','1',0,'1','1'),(6,1,'Bent','Overgaard','112',0,'bornholm@bornholm','1');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -211,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-16 14:10:26
+-- Dump completed on 2021-04-19  9:24:06
