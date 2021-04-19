@@ -13,7 +13,6 @@ public class CommandProtectedPage extends Command
     {
         this.pageToShow = pageToShow;
         this.role = role;
-
     }
 
     @Override
