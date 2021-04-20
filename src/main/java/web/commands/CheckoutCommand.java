@@ -10,8 +10,8 @@ import java.util.List;
 
 public class CheckoutCommand extends CommandUnprotectedPage {
 
-    CakeMapper cakeMapper;
-    List<Cupcake> cupcakeList = new ArrayList<>();
+    protected CakeMapper cakeMapper;
+    private List<Cupcake> cupcakeList = new ArrayList<>();
 
     public CheckoutCommand(String pageToShow) {
         super(pageToShow);

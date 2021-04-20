@@ -26,6 +26,8 @@
                 </tr>
             </c:forEach>
         </table>
+        <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
+        <a href="${pageContext.request.contextPath}/fc/paymentpage">Til betaling</a>
     </jsp:body>
 
 </t:genericpage>
