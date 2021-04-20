@@ -21,40 +21,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
-public class FrontController extends HttpServlet
-{
+public class FrontController extends HttpServlet {
     private final static String USER = "root";
     private final static String PASSWORD = "1234";
     private final static String URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=CET";
 
     public static Database database;
 
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         // Initialize database connection
-        if (database == null)
-        {
-            try
-            {
+        if (database == null) {
+            try {
                 database = new Database(USER, PASSWORD, URL);
-            }
-            catch (ClassNotFoundException ex)
-            {
+            } catch (ClassNotFoundException ex) {
                 Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
             }
         }
 
         // Initialize whatever global datastructures needed here:
-
         CakeMapper cakeMapper = new CakeMapper(database);
-        ServletContext application=getServletContext();
+        ServletContext application = getServletContext();
         List<Topping> toppinglist = new ArrayList<>();
         try {
             toppinglist = cakeMapper.getAllToppings();
         } catch (UserException e) {
             e.printStackTrace();
         }
-        application.setAttribute("toppinglist",toppinglist);
+        application.setAttribute("toppinglist", toppinglist);
 
         List<Bottom> bottomlist = new ArrayList<>();
         try {
@@ -62,21 +55,14 @@ public class FrontController extends HttpServlet
         } catch (UserException e) {
             e.printStackTrace();
         }
-        application.setAttribute("bottomlist",bottomlist);
-
-
-
-
-
+        application.setAttribute("bottomlist", bottomlist);
     }
 
     protected void processRequest(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        try
-        {
+            throws ServletException, IOException {
+        try {
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
             Command action = Command.fromPath(request, database);
@@ -95,9 +81,7 @@ public class FrontController extends HttpServlet
             }
 
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
-        }
-        catch (UnsupportedEncodingException | UserException ex)
-        {
+        } catch (UnsupportedEncodingException | UserException ex) {
             request.setAttribute("problem", ex.getMessage());
             Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
             request.getRequestDispatcher("/errorpage.jsp").forward(request, response);
@@ -108,8 +92,7 @@ public class FrontController extends HttpServlet
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -117,15 +100,12 @@ public class FrontController extends HttpServlet
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
     @Override
-    public String getServletInfo()
-    {
+    public String getServletInfo() {
         return "FrontController for application";
     }
-
 }

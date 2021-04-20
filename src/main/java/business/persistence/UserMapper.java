@@ -44,7 +44,6 @@ public class UserMapper {
                     user.setBalance(balance);
                 }
 
-
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -53,11 +52,9 @@ public class UserMapper {
         }
     }
 
-            public User login(String email, String password) throws UserException {
-
+    public User login(String email, String password) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM user WHERE email=? AND password=?";
-
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);

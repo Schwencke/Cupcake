@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckoutCommand extends CommandProtectedPage {
+public class CheckoutCommand extends CommandUnprotectedPage {
 
     CakeMapper cakeMapper;
+    List<Cupcake> cupcakeList = new ArrayList<>();
 
-    public CheckoutCommand(String pageToShow, String role) {
-        super(pageToShow, role);
+    public CheckoutCommand(String pageToShow) {
+        super(pageToShow);
         this.cakeMapper = new CakeMapper(database);
     }
 
@@ -22,19 +23,14 @@ public class CheckoutCommand extends CommandProtectedPage {
 
         String topping = request.getParameter("topping");
         String bottom = request.getParameter("bottom");
-        int price = Integer.parseInt(request.getParameter("price"));
+        String[] toppingArray = topping.split(",");
+        String[] bottomArray = bottom.split(",");
+        int price = Integer.parseInt(toppingArray[1]) + Integer.parseInt(bottomArray[1]);
+        topping = toppingArray[0];
+        bottom = bottomArray[0];
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        Cupcake cupcake = new Cupcake(topping, bottom, amount, price);
-        
-        List<Cupcake> cupcakeList = null;
-
-        if (cupcakeList != null) {
-            cupcakeList.add(cupcake);
-        } else {
-            cupcakeList = new ArrayList<>();
-            cupcakeList.add(cupcake);
-        }
+        cupcakeList.add(new Cupcake(topping, bottom, price, amount));
 
         request.setAttribute("cupcakelist", cupcakeList);
 

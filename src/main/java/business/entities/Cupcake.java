@@ -1,24 +1,24 @@
 package business.entities;
 
 public class Cupcake {
-    String top;
+    String topping;
     String bottom;
     int price;
     int amount;
 
     public Cupcake(String top, String bottom, int price, int amount) {
-        this.top = top;
+        this.topping = top;
         this.bottom = bottom;
         this.price = price;
         this.amount = amount;
     }
 
-    public String getTop() {
-        return top;
+    public String getTopping() {
+        return topping;
     }
 
-    public void setTop(String top) {
-        this.top = top;
+    public void setTopping(String topping) {
+        this.topping = topping;
     }
 
     public String getBottom() {

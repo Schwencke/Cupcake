@@ -14,15 +14,15 @@
             <thead>
             <th>Bund</th>
             <th>Topping</th>
-            <th>Pris</th>
             <th>Antal</th>
+            <th>Pris</th>
             </thead>
             <c:forEach var="cupcake" items="${requestScope.cupcakelist}">
                 <tr>
-                    <td>${cupcake.bottom}</td>
                     <td>${cupcake.topping}</td>
-                    <td>${cupcake.price}</td>
+                    <td>${cupcake.bottom}</td>
                     <td>${cupcake.amount}</td>
+                    <td>${cupcake.price}</td>
                 </tr>
             </c:forEach>
         </table>

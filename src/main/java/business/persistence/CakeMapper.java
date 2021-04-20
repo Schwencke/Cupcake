@@ -24,13 +24,12 @@ public class CakeMapper {
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet resultSet = ps.executeQuery();
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     int toppingId = resultSet.getInt("topping_id");
                     String flavor = resultSet.getString("flavor");
                     int price = resultSet.getInt("price");
 
-                    toppings.add(new Topping(toppingId,flavor,price));
-
+                    toppings.add(new Topping(toppingId, flavor, price));
                 }
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
@@ -41,7 +40,6 @@ public class CakeMapper {
         return toppings;
     }
 
-
     public List<Bottom> getAllBottoms() throws UserException {
         List<Bottom> bottoms = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -49,13 +47,12 @@ public class CakeMapper {
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet resultSet = ps.executeQuery();
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     int bottomId = resultSet.getInt("bottom_id");
                     String flavor = resultSet.getString("flavor");
                     int price = resultSet.getInt("price");
 
-                    bottoms.add(new Bottom(bottomId,flavor,price));
-
+                    bottoms.add(new Bottom(bottomId, flavor, price));
                 }
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
@@ -65,5 +62,4 @@ public class CakeMapper {
         }
         return bottoms;
     }
-
 }

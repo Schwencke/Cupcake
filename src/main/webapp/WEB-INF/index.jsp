@@ -24,23 +24,20 @@
                 <label class="form-check-label" for="bottom_id">Vælg Bund:</label><br>
                 <select class="form-control" name="bottom" id="bottom_id">
                     <c:forEach var="bottom" items="${applicationScope.bottomlist}">
-                        <option value="${bottom.flavor}">${bottom.flavor}</option>
+                        <option value="${bottom.flavor},${bottom.price}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
                     </c:forEach>
                 </select>
 
                 <label class="form-check-label" for="topping_id">Vælg Topping:</label><br>
                 <select class="form-control" name="topping" id="topping_id">
                     <c:forEach var="topping" items="${applicationScope.toppinglist}">
-                        <option value="${topping.flavor}">${topping.flavor}</option>
+                        <option value="${topping.flavor},${topping.price}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
                     </c:forEach>
                 </select>
-
-                <!-- // TODO: Price -->
 
                 <label for="amount">Antal:</label>
                 <input id="amount" type="number" value="1" name="amount">
 
-                <!-- <input type="submit" value="Læg i kurven"> -->
                 <button type="submit">Læg i kurven</button>
             </div>
         </form>
