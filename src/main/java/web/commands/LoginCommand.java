@@ -32,9 +32,16 @@ public class LoginCommand extends CommandUnprotectedPage
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());
         session.setAttribute("email", email);
+        String pageToShow;
 
-        String pageToShow =  user.getRole() + "page";
-        return REDIRECT_INDICATOR + pageToShow;
+        if (session.getAttribute("cupcakeList")!=null){
+            pageToShow = "paymentpage";
+        }else {
+            pageToShow =  user.getRole() + "page";
+        }
+            return REDIRECT_INDICATOR + pageToShow;
+
+
         }
         catch (UserException ex)
         {

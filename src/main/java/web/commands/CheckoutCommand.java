@@ -33,7 +33,7 @@ public class CheckoutCommand extends CommandUnprotectedPage {
         cupcakeList.add(new Cupcake(topping, bottom, price, amount));
 
         request.setAttribute("cupcakelist", cupcakeList);
-
+        request.getSession().setAttribute("cupcakeList", cupcakeList);
         return pageToShow;
     }
 }
