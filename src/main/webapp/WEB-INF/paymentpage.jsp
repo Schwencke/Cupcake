@@ -34,6 +34,12 @@
         </table>
         <a href="${pageContext.request.contextPath}/fc/checkoutpage">Fortryd</a>
         <a href="${pageContext.request.contextPath}/fc/paymentprocesspage">Betal</a>
+
+        <c:if test="${requestScope.error != null }">
+            <p style="color:red">
+                    ${requestScope.error}
+            </p>
+        </c:if>
     </jsp:body>
 
 </t:genericpage>
