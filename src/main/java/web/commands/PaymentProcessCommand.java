@@ -33,6 +33,7 @@ public class PaymentProcessCommand extends CommandProtectedPage {
                 user.setBalance(balance - priceTotal);
                 userFacade.updateBalance(userId, user.getBalance());
 //                session.setAttribute("balance", balance);
+                session.removeAttribute("cupcakelist");
             }
         }  catch (UserException ex) {
             request.setAttribute("error", "Sufficient funds required!");
