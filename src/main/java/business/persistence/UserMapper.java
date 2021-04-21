@@ -15,7 +15,7 @@ public class UserMapper {
 
     public void createUser(User user) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO user (firstname, lastname, phone_no, email, password) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO `user` (firstname, lastname, phone_no, email, password) VALUES (?, ?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, user.getFirstname());
@@ -54,7 +54,7 @@ public class UserMapper {
 
     public User login(String email, String password) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM user WHERE email=? AND password=?";
+            String sql = "SELECT * FROM `user` WHERE `email` = ? AND `password` = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);
@@ -90,6 +90,28 @@ public class UserMapper {
                 } catch (SQLException ex) {
                     throw new UserException(ex.getMessage());
                 }
+            } catch (SQLException ex) {
+                throw new UserException("Connection to database could not be established");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public User getBalance(int userId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT `balance` FROM `user` WHERE `user_id` = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, userId);
+                ResultSet rs = ps.executeQuery();
+                User user = new User();
+                while (rs.next()) {
+                    int balance = rs.getInt("balance");
+                    user.setBalance(balance);
+                }
+                return user;
             } catch (SQLException ex) {
                 throw new UserException("Connection to database could not be established");
             }

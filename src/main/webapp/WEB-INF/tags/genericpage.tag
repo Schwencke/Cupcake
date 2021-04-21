@@ -44,6 +44,7 @@
     <div>
 
         <c:if test="${sessionScope.user != null }">
+            Saldo: ${sessionScope.user.balance},-
             ${sessionScope.user.email}
         </c:if>
 

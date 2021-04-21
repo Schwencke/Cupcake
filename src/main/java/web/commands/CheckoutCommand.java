@@ -32,8 +32,13 @@ public class CheckoutCommand extends CommandUnprotectedPage {
 
         cupcakeList.add(new Cupcake(topping, bottom, price, amount));
 
-        //request.setAttribute("cupcakelist", cupcakeList);
-        request.getSession().setAttribute("cupcakeList", cupcakeList);
+        int priceTotal = 0;
+        for (Cupcake cupcake : cupcakeList) {
+            priceTotal += cupcake.getPrice() * cupcake.getAmount();
+        }
+
+        request.getSession().setAttribute("pricetotal", priceTotal);
+        request.getSession().setAttribute("cupcakelist", cupcakeList);
         return pageToShow;
     }
 }

@@ -17,18 +17,22 @@
             <th>Antal</th>
             <th>Pris</th>
             </thead>
-            <c:forEach var="cupcake" items="${sessionScope.cupcakeList}">
+            <c:forEach var="cupcake" items="${sessionScope.cupcakelist}">
                 <tr>
                     <td>${cupcake.topping}</td>
                     <td>${cupcake.bottom}</td>
                     <td>${cupcake.amount}</td>
-                    <td>${cupcake.price}</td>
+                    <td>${cupcake.price},-</td>
                 </tr>
             </c:forEach>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total pris: ${sessionScope.pricetotal},-</td>
+            </tr>
         </table>
         <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
         <a href="${pageContext.request.contextPath}/fc/paymentpage">Til betaling</a>
     </jsp:body>
-
 </t:genericpage>
-
