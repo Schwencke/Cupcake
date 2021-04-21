@@ -4,13 +4,13 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Payment Page
+         Basket Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
-         <table class="table table-striped">
+        <table class="table table-striped">
             <thead>
             <th>Bund</th>
             <th>Topping</th>
@@ -32,15 +32,8 @@
                 <td>Total pris: ${sessionScope.pricetotal},-</td>
             </tr>
         </table>
-        <a href="${pageContext.request.contextPath}/fc/basketpage">Fortryd</a>
-        <a href="${pageContext.request.contextPath}/fc/paymentpage">Betal</a>
 
-        <c:if test="${requestScope.error != null }">
-            <p style="color:red">
-                    ${requestScope.error}
-            </p>
-        </c:if>
+        <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
+        <a href="${pageContext.request.contextPath}/fc/checkoutpage">Til betaling</a>
     </jsp:body>
-
 </t:genericpage>
-

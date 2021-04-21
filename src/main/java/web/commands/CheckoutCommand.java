@@ -1,23 +1,25 @@
 package web.commands;
 
-import business.entities.Cupcake;
-import business.persistence.CakeMapper;
+import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
-public class CheckoutCommand extends CommandUnprotectedPage {
+public class CheckoutCommand extends CommandProtectedPage {
 
-    protected CakeMapper cakeMapper;
+    private UserFacade userFacade;
 
-    public CheckoutCommand(String pageToShow) {
-        super(pageToShow);
-        this.cakeMapper = new CakeMapper(database);
+    public CheckoutCommand(String pageToShow, String role) {
+        super(pageToShow, role);
+        userFacade = new UserFacade(database);
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-         return pageToShow;
+
+
+
+
+        return pageToShow;
     }
 }

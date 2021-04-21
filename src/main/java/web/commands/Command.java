@@ -28,10 +28,10 @@ public abstract class Command
         commands.put("registercommand", new RegisterCommand(""));
         commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
-        commands.put("checkoutpage", new CheckoutCommand("checkoutpage"));
-        commands.put("basketpage", new BasketCommand("index"));
+        commands.put("basketpage", new BasketCommand("basketpage"));
+        commands.put("addtobasketcommand", new AddToBasketCommand("index"));
+        commands.put("checkoutpage", new CheckoutCommand("checkoutpage", "customer"));
         commands.put("paymentpage", new PaymentCommand("paymentpage", "customer"));
-        commands.put("paymentprocesspage", new PaymentProcessCommand("paymentprocesspage", "customer"));
     }
 
     public static Command fromPath(

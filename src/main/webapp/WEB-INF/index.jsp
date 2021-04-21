@@ -19,7 +19,7 @@
         <div style="margin-top: 3em;margin-bottom: 3em;">
             CUPCAKES GALOOORE
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/basketpage">
+        <form method="post" action="${pageContext.request.contextPath}/fc/addtobasketcommand">
             <div class="form-group mt-2">
                 <label class="form-check-label" for="bottom_id">Vælg Bund:</label><br>
                 <select class="form-control" name="bottom" id="bottom_id">
