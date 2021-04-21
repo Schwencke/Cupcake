@@ -19,7 +19,6 @@ public class PaymentProcessCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        //int balance = Integer.parseInt(request.getParameter("balance"));
         try {
             HttpSession session = request.getSession();
 
@@ -27,18 +26,18 @@ public class PaymentProcessCommand extends CommandProtectedPage {
             int userId = user.getUserId();
             user.setBalance(userFacade.getBalance(userId));
 
+            int balance = user.getBalance();
             int priceTotal = (int) session.getAttribute("pricetotal");
 
-            if (user.getBalance() > priceTotal) {
-                user.setBalance(user.getBalance() - priceTotal);
-                session.setAttribute("balance", user.getBalance());
+            if (balance > priceTotal) {
+                user.setBalance(balance - priceTotal);
+                userFacade.updateBalance(userId, user.getBalance());
+//                session.setAttribute("balance", balance);
             }
         }  catch (UserException ex) {
             request.setAttribute("error", "Sufficient funds required!");
             return "paymentpage";
         }
-
-
         return pageToShow;
     }
 }
