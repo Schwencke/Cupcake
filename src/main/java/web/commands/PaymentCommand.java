@@ -1,6 +1,6 @@
 package web.commands;
 
-import business.entities.Cupcake;
+import business.entities.OrderLine;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.UserFacade;
@@ -13,7 +13,7 @@ import java.util.List;
 public class PaymentCommand extends CommandProtectedPage {
 
     private UserFacade userFacade;
-    private List<Cupcake> cupcakeList;
+    private List<OrderLine> orderLineList;
 
     public PaymentCommand(String pageToShow, String role) {
         super(pageToShow, role);
@@ -34,8 +34,8 @@ public class PaymentCommand extends CommandProtectedPage {
         if (balance > priceTotal) {
             user.setBalance(balance - priceTotal);
             userFacade.updateBalance(userId, user.getBalance());
-            System.out.println(cupcakeList);
-            request.getSession().removeAttribute("cupcakelist");
+            System.out.println(orderLineList);
+            request.getSession().removeAttribute("orderlinelist");
             request.getSession().removeAttribute("pricetotal");
         } else {
             request.setAttribute("error", "Sufficient funds required!");

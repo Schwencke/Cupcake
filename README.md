@@ -51,12 +51,12 @@ You need three main steps to get started:
 
 1. Git:
     1. Clone the project (not fork): [https://github.com/jonbertelsen/sem2-startcode](https://github.com/jonbertelsen/sem2-startcode)
-    2. Rename the project folder if needed (to cupcake, webshop etc)
+    2. Rename the project folder if needed (to orderLine, webshop etc)
     3. Make it your own Git project by first removing the `.git` folder (use `rm -rf .git/`). Then
        create a fresh repo with `git init`, `git branch -m main`,  `git add .`, `git commit -m "First commit"`
     4. Create a repo on Github and push project
 2. Database:
-    1. Create a schema/database for the project in MySql. Ex: 'cupcake'
+    1. Create a schema/database for the project in MySql. Ex: 'orderLine'
     2. Create a test-database for the integration tests in MySql. Ex: 'cupcake_test'
     3. Run the `dbInit.sql` script in the persistence folder to populate database with user a table. Observe
        carefully the instructions in the script file if you need renaming.

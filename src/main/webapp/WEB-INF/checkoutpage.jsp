@@ -17,12 +17,12 @@
             <th>Antal</th>
             <th>Pris</th>
             </thead>
-            <c:forEach var="cupcake" items="${sessionScope.cupcakelist}">
+            <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
                 <tr>
-                    <td>${cupcake.topping}</td>
-                    <td>${cupcake.bottom}</td>
-                    <td>${cupcake.amount}</td>
-                    <td>${cupcake.price},-</td>
+                    <td>${orderline.topping}</td>
+                    <td>${orderline.bottom}</td>
+                    <td>${orderline.amount}</td>
+                    <td>${orderline.price},-</td>
                 </tr>
             </c:forEach>
             <tr>

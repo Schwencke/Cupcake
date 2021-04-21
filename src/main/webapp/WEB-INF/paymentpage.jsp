@@ -4,13 +4,13 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Payment Process Page
+         Payment Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
-        ${sessionScope.user.balance}
+        Payment success. - Enjoy your cupcakes!
     </jsp:body>
 
 </t:genericpage>

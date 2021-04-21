@@ -1,47 +1,31 @@
 package business.entities;
 
 public class OrderLine {
-    Bottom bottom;
-    Topping topping;
-    int quantity;
+    String topping;
+    String bottom;
     int price;
+    int amount;
 
-    public OrderLine(Bottom bottom, Topping topping, int amount, int price) {
+    public OrderLine(String top, String bottom, int price, int amount) {
+        this.topping = top;
         this.bottom = bottom;
-        this.topping = topping;
-        this.quantity = amount;
         this.price = price;
+        this.amount = amount;
     }
 
-    public Bottom getBottom() {
-        return bottom;
-    }
-
-    public void setBottom(Bottom bottom) {
-        this.bottom = bottom;
-    }
-
-    public Topping getTopping() {
+    public String getTopping() {
         return topping;
     }
 
-    public void setTopping(Topping topping) {
-        this.topping = topping;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public String getBottom() {
+        return bottom;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public int getAmount() {
+        return amount;
     }
 }

@@ -22,7 +22,4 @@ public class CakeFacade {
     public List<Bottom> getAllBottoms() throws UserException {
         return cakeMapper.getAllBottoms();
     }
-
-
-
 }

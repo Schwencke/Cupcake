@@ -1,6 +1,6 @@
 package web.commands;
 
-import business.entities.Cupcake;
+import business.entities.OrderLine;
 import business.persistence.CakeMapper;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import java.util.List;
 public class AddToBasketCommand extends CommandUnprotectedPage {
 
     protected CakeMapper cakeMapper;
-    List<Cupcake> cupcakeList;
+    List<OrderLine> orderLineList;
 
     public AddToBasketCommand(String pageToShow) {
         super(pageToShow);
@@ -23,7 +23,7 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
-        cupcakeList = (List<Cupcake>) session.getAttribute("cupcakelist");
+        orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
 
         String topping = request.getParameter("topping");
         String bottom = request.getParameter("bottom");
@@ -34,18 +34,18 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
         bottom = bottomArray[0];
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        if (cupcakeList == null) {
-            cupcakeList = new ArrayList<>();
+        if (orderLineList == null) {
+            orderLineList = new ArrayList<>();
         }
-        cupcakeList.add(new Cupcake(topping, bottom, price, amount));
+        orderLineList.add(new OrderLine(topping, bottom, price, amount));
 
         int priceTotal = 0;
-        for (Cupcake cupcake : cupcakeList) {
-            priceTotal += cupcake.getPrice() * cupcake.getAmount();
+        for (OrderLine orderLine : orderLineList) {
+            priceTotal += orderLine.getPrice() * orderLine.getAmount();
         }
 
         request.getSession().setAttribute("pricetotal", priceTotal);
-        request.getSession().setAttribute("cupcakelist", cupcakeList);
+        request.getSession().setAttribute("orderlinelist", orderLineList);
 
         request.setAttribute("msg", "Cupcake tilføjet.");
 

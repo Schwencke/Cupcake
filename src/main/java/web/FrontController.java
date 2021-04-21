@@ -5,6 +5,7 @@ import business.entities.Topping;
 import business.exceptions.UserException;
 import business.persistence.CakeMapper;
 import business.persistence.Database;
+import business.services.CakeFacade;
 import web.commands.*;
 
 import java.io.IOException;
@@ -39,11 +40,11 @@ public class FrontController extends HttpServlet {
         }
 
         // Initialize whatever global datastructures needed here:
-        CakeMapper cakeMapper = new CakeMapper(database);
+        CakeFacade cakeFacade = new CakeFacade(database);
         ServletContext application = getServletContext();
         List<Topping> toppinglist = new ArrayList<>();
         try {
-            toppinglist = cakeMapper.getAllToppings();
+            toppinglist = cakeFacade.getAllToppings();
         } catch (UserException e) {
             e.printStackTrace();
         }
@@ -51,7 +52,7 @@ public class FrontController extends HttpServlet {
 
         List<Bottom> bottomlist = new ArrayList<>();
         try {
-            bottomlist = cakeMapper.getAllBottoms();
+            bottomlist = cakeFacade.getAllBottoms();
         } catch (UserException e) {
             e.printStackTrace();
         }

@@ -32,7 +32,7 @@ public class LoginCommand extends CommandUnprotectedPage {
 
             String pageToShow;
 
-            if (session.getAttribute("cupcakelist") != null) {
+            if (session.getAttribute("orderlinelist") != null) {
                 pageToShow = "checkoutpage";
             } else {
                 pageToShow = user.getRole() + "page";
