@@ -20,7 +20,7 @@ public class CakeMapper {
     public List<Topping> getAllToppings() throws UserException {
         List<Topping> toppings = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM topping";
+            String sql = "SELECT * FROM `topping`";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet resultSet = ps.executeQuery();
@@ -35,7 +35,7 @@ public class CakeMapper {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException ex) {
-            throw new UserException(ex.getMessage());
+            throw new UserException("Connection to database could not be established");
         }
         return toppings;
     }
@@ -43,7 +43,7 @@ public class CakeMapper {
     public List<Bottom> getAllBottoms() throws UserException {
         List<Bottom> bottoms = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM bottom";
+            String sql = "SELECT * FROM `bottom`";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet resultSet = ps.executeQuery();
@@ -58,7 +58,7 @@ public class CakeMapper {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException ex) {
-            throw new UserException(ex.getMessage());
+            throw new UserException("Connection to database could not be established");
         }
         return bottoms;
     }

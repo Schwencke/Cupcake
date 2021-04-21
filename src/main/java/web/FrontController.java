@@ -1,16 +1,16 @@
 package web;
 
 import business.entities.Bottom;
+import business.entities.Status;
 import business.entities.Topping;
 import business.exceptions.UserException;
-import business.persistence.CakeMapper;
 import business.persistence.Database;
 import business.services.CakeFacade;
+import business.services.StatusFacade;
 import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,23 +40,33 @@ public class FrontController extends HttpServlet {
         }
 
         // Initialize whatever global datastructures needed here:
-        CakeFacade cakeFacade = new CakeFacade(database);
         ServletContext application = getServletContext();
-        List<Topping> toppinglist = new ArrayList<>();
-        try {
-            toppinglist = cakeFacade.getAllToppings();
-        } catch (UserException e) {
-            e.printStackTrace();
-        }
-        application.setAttribute("toppinglist", toppinglist);
 
-        List<Bottom> bottomlist = new ArrayList<>();
+        CakeFacade cakeFacade = new CakeFacade(database);
+        List<Topping> toppingList;
         try {
-            bottomlist = cakeFacade.getAllBottoms();
-        } catch (UserException e) {
-            e.printStackTrace();
+            toppingList = cakeFacade.getAllToppings();
+        } catch (UserException ex) {
+            throw new ServletException(ex.getMessage());
         }
-        application.setAttribute("bottomlist", bottomlist);
+        application.setAttribute("toppinglist", toppingList);
+
+        List<Bottom> bottomList;
+        try {
+            bottomList = cakeFacade.getAllBottoms();
+        } catch (UserException ex) {
+            throw new ServletException(ex.getMessage());
+        }
+        application.setAttribute("bottomlist", bottomList);
+
+        StatusFacade statusFacade = new StatusFacade(database);
+        List<Status> statusList;
+        try {
+            statusList = statusFacade.getAllStatus();
+        } catch (UserException ex) {
+            throw new ServletException(ex.getMessage());
+        }
+        application.setAttribute("statuslist", statusList);
     }
 
     protected void processRequest(

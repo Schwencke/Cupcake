@@ -28,11 +28,11 @@ public class UserMapper {
                 ids.next();
                 int userId = ids.getInt(1);
                 user.setUserId(userId);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
             }
 
-            String sql2 = "SELECT role_id, balance FROM user WHERE user_id=?";
+            String sql2 = "SELECT `role_id`, `balance` FROM user WHERE `user_id`= ?";
             try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
                 ps2.setInt(1, user.getUserId());
                 ResultSet rs2 = ps2.executeQuery();
@@ -42,11 +42,11 @@ public class UserMapper {
                     user.setRoleId(roleId);
                     user.setBalance(balance);
                 }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
         }
     }
 
@@ -79,7 +79,7 @@ public class UserMapper {
                 throw new UserException(ex.getMessage());
             }
 
-            String sql2 = "SELECT name FROM role WHERE role_id=?";
+            String sql2 = "SELECT `name` FROM `role` WHERE `role_id` = ?";
             try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
                 ps2.setInt(1, user.getRoleId());
                 ResultSet rs2 = ps2.executeQuery();
