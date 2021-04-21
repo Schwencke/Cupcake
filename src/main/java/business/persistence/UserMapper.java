@@ -99,25 +99,25 @@ public class UserMapper {
         return null;
     }
 
-    public User getBalance(int userId) throws UserException {
+    public Integer getBalance(int userId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "SELECT `balance` FROM `user` WHERE `user_id` = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
-                User user = new User();
                 while (rs.next()) {
                     int balance = rs.getInt("balance");
-                    user.setBalance(balance);
+
+                    return balance;
                 }
-                return user;
             } catch (SQLException ex) {
                 throw new UserException("Connection to database could not be established");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         return null;
     }
 }

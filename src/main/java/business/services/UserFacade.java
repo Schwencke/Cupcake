@@ -22,7 +22,7 @@ public class UserFacade {
         return user;
     }
 
-    public User getBalance(int userId) throws UserException {
+    public int getBalance(int userId) throws UserException {
         return userMapper.getBalance(userId);
     }
 }

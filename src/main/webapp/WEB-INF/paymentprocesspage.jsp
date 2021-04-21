@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:body>
-
+${sessionScope.balance}
     </jsp:body>
 
 </t:genericpage>
