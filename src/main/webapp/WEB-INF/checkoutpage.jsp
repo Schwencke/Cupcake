@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Checkout
+         Checkout Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -32,6 +32,7 @@
                 <td>Total pris: ${sessionScope.pricetotal},-</td>
             </tr>
         </table>
+
         <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
         <a href="${pageContext.request.contextPath}/fc/paymentpage">Til betaling</a>
     </jsp:body>

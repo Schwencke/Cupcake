@@ -19,7 +19,7 @@
         <div style="margin-top: 3em;margin-bottom: 3em;">
             CUPCAKES GALOOORE
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/checkoutpage">
+        <form method="post" action="${pageContext.request.contextPath}/fc/basketpage">
             <div class="form-group mt-2">
                 <label class="form-check-label" for="bottom_id">Vælg Bund:</label><br>
                 <select class="form-control" name="bottom" id="bottom_id">
@@ -42,6 +42,12 @@
             </div>
         </form>
 
+        <c:if test="${requestScope.msg != null }">
+            <p style="color:green">
+                    ${requestScope.msg}
+            </p>
+        </c:if>
+<!--
         <c:if test="${sessionScope.role == 'employee' }">
             <p style="font-size: larger">This is what you can do,
                 since your are logged in as an employee</p>
@@ -53,7 +59,7 @@
                 are logged in as a customer</p>
             <p><a href="fc/customerpage">Customer Page</a>
         </c:if>
-
+-->
         </div>
 
     </jsp:body>

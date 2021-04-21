@@ -36,6 +36,7 @@ public class PaymentProcessCommand extends CommandProtectedPage {
             userFacade.updateBalance(userId, user.getBalance());
             System.out.println(cupcakeList);
             request.getSession().removeAttribute("cupcakelist");
+            request.getSession().removeAttribute("pricetotal");
         } else {
             request.setAttribute("error", "Sufficient funds required!");
             return "paymentpage";
