@@ -30,17 +30,18 @@ public class LoginCommand extends CommandUnprotectedPage {
             session.setAttribute("role", user.getRole());
             session.setAttribute("email", email);
 
-            String pageToShow ="";
+            String pageToShow = "";
 
             if (session.getAttribute("orderlinelist") != null) {
                 pageToShow = "checkoutpage";
             } else if (user.getRole() != null) {
                 pageToShow = user.getRole() + "page";
-                return REDIRECT_INDICATOR + pageToShow;
+            } else {
+                session.invalidate();
+                request.setAttribute("error", "Wrong username or password!");
+                pageToShow = "loginpage";
             }
-            session.invalidate();
-            request.setAttribute("error", "Wrong username or password!");
-            return "loginpage";
+            return REDIRECT_INDICATOR + pageToShow;
         } catch (UserException ex) {
             request.setAttribute("error", "Wrong username or password!");
             return "loginpage";

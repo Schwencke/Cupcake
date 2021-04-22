@@ -48,11 +48,9 @@
         <c:set var="isNotLoginPage" value="${!fn:endsWith(thisPage,'loginpage.jsp')}"/>
         <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
 
-        <c:if test="${isNotLoginPage && isNotRegisterPage}">
-            <c:if test="${sessionScope.user != null }">
-                Saldo: ${sessionScope.user.balance},-
-                ${sessionScope.user.email}
-            </c:if>
+        <c:if test="${sessionScope.user != null }">
+            Saldo: ${sessionScope.user.balance},-
+            ${sessionScope.user.email}
         </c:if>
 
         <c:if test="${isNotLoginPage && isNotRegisterPage}">

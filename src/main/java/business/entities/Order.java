@@ -1,10 +1,13 @@
 package business.entities;
 
+import java.sql.Timestamp;
+
 public class Order {
     int orderId;
     int userId;
     int priceTotal;
-    Status status;
+    int status_id;
+    Timestamp created;
 
     public Order(int orderId, int userId, int priceTotal) {
         this.orderId = orderId;
@@ -12,11 +15,12 @@ public class Order {
         this.priceTotal = priceTotal;
     }
 
-    public Order(int orderId, int userId, int priceTotal, Status status) {
+    public Order(int orderId, int userId, int priceTotal, int status_id, Timestamp created) {
         this.orderId = orderId;
         this.userId = userId;
         this.priceTotal = priceTotal;
-        this.status = status;
+        this.status_id = status_id;
+        this.created = created;
     }
 
     public int getOrderId() {
@@ -43,11 +47,19 @@ public class Order {
         this.priceTotal = priceTotal;
     }
 
-    public Status getStatus() {
-        return status;
+    public int getStatus_id() {
+        return status_id;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus_id(int status_id) {
+        this.status_id = status_id;
+    }
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 }
