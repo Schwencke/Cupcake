@@ -6,7 +6,7 @@ public class Order {
     int orderId;
     int userId;
     int priceTotal;
-    int status_id;
+    int statusId;
     Timestamp created;
 
     public Order(int orderId, int userId, int priceTotal) {
@@ -19,7 +19,7 @@ public class Order {
         this.orderId = orderId;
         this.userId = userId;
         this.priceTotal = priceTotal;
-        this.status_id = status_id;
+        this.statusId = status_id;
         this.created = created;
     }
 
@@ -47,12 +47,12 @@ public class Order {
         this.priceTotal = priceTotal;
     }
 
-    public int getStatus_id() {
-        return status_id;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setStatus_id(int status_id) {
-        this.status_id = status_id;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public Timestamp getCreated() {

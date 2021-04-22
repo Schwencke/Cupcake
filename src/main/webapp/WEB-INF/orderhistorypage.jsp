@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Checkout Page
+         Order History
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -12,28 +12,26 @@
     <jsp:body>
          <table class="table table-striped">
             <thead>
-            <th>Bund</th>
-            <th>Topping</th>
-            <th>Antal</th>
-            <th>Pris</th>
+            <th>OrdreNo:</th>
+            <th>Pris Total:</th>
+            <th>Oprettet</th>
+            <th>Status</th>
             </thead>
-            <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
+            <c:forEach var="orderlist" items="${sessionScope.orderlist}">
                 <tr>
-                    <td>${orderline.topping}</td>
-                    <td>${orderline.bottom}</td>
-                    <td>${orderline.amount}</td>
-                    <td>${orderline.price},-</td>
+                    <td>${orderlist.orderId}</td>
+                    <td>${orderlist.priceTotal},-</td>
+                    <td>${orderlist.created}</td>
+                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
                 </tr>
             </c:forEach>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>Total pris: ${sessionScope.pricetotal},-</td>
+                <td></td>
             </tr>
         </table>
-        <a href="${pageContext.request.contextPath}/fc/basketpage">Fortryd</a>
-        <a href="${pageContext.request.contextPath}/fc/paymentpage">Betal</a>
 
         <c:if test="${requestScope.error != null }">
             <p style="color:red">

@@ -16,14 +16,14 @@ public class OrderFacade {
     }
 
     public List<Order> getAllOrders() throws UserException {
-        return getAllOrders();
+        return orderMapper.getAllOrders();
     }
 
     public List<Order> getAllOrdersById(int userId) throws UserException {
-        return  getAllOrdersById(userId);
+        return orderMapper.getAllOrdersById(userId);
     }
 
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {
-        return getAllOrderLinesById(orderId);
+        return orderMapper.getAllOrderLinesById(orderId);
     }
 }

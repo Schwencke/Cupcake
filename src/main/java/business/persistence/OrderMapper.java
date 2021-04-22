@@ -2,7 +2,6 @@ package business.persistence;
 
 import business.entities.Order;
 import business.entities.OrderLine;
-import business.entities.Status;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -77,7 +76,7 @@ public class OrderMapper {
                     orderList.add(new Order(orderId, userId, priceTotal, statusId, created));
                     return orderList;
                 }
-                throw new UserException("Bruger ID findes ikke for user_id = " + userId);
+                throw new UserException("Ordre ID findes ikke for user_id = " + userId);
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }

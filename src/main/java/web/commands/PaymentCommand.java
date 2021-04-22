@@ -34,7 +34,6 @@ public class PaymentCommand extends CommandProtectedPage {
         if (balance > priceTotal) {
             user.setBalance(balance - priceTotal);
             userFacade.updateBalance(userId, user.getBalance());
-            System.out.println(orderLineList);
             request.getSession().removeAttribute("orderlinelist");
             request.getSession().removeAttribute("pricetotal");
         } else {
