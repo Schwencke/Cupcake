@@ -16,8 +16,8 @@ public class OrderFacade {
         this.orderMapper = new OrderMapper(database);
     }
 
-    public void createOrder(Order order) throws UserException {
-        orderMapper.createOrder(order);
+    public Order createOrder(Order order) throws UserException {
+        return orderMapper.createOrder(order);
     }
 
     public void createOrderLine(OrderLine orderLine) throws UserException {

@@ -17,7 +17,7 @@ public class OrderMapper {
         this.database = database;
     }
 
-    public void createOrder(Order order) throws UserException {
+    public Order createOrder(Order order) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO `order` (user_id, price_total) VALUES (?, ?)";
 
@@ -29,6 +29,8 @@ public class OrderMapper {
                 ids.next();
                 int orderId = ids.getInt(1);
                 order.setOrderId(orderId);
+
+                return order;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
@@ -44,8 +46,8 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, orderLine.getOrderId());
                 ps.setInt(2, orderLine.getAmount());
-                ps.setString(3, orderLine.getBottom());
-                ps.setString(4, orderLine.getTopping());
+                ps.setInt(3, orderLine.getBottomId());
+                ps.setInt(4, orderLine.getToppingId());
                 ps.executeUpdate();
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());

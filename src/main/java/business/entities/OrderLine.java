@@ -3,9 +3,36 @@ package business.entities;
 public class OrderLine {
     int orderId;
     String bottom;
+    int bottomId;
     String topping;
+    int toppingId;
     int price;
     int amount;
+
+    public OrderLine(String bottom, int bottomId, String topping, int toppingId, int price, int amount) {
+        this.bottom = bottom;
+        this.bottomId = bottomId;
+        this.topping = topping;
+        this.toppingId = toppingId;
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public int getBottomId() {
+        return bottomId;
+    }
+
+    public void setBottomId(int bottomId) {
+        this.bottomId = bottomId;
+    }
+
+    public int getToppingId() {
+        return toppingId;
+    }
+
+    public void setToppingId(int toppingId) {
+        this.toppingId = toppingId;
+    }
 
     public OrderLine(int orderId, String bottom, String topping, int price, int amount) {
         this.orderId = orderId;
