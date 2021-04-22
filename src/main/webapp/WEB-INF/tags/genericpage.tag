@@ -19,7 +19,7 @@
 </head>
 <div class="container-fluid">
     <div class="jumbotron-fluid bg-light">
-        <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid">
+       <!-- <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid"> -->
 
     <!--
         This header is inspired by this bootstrap
@@ -44,14 +44,16 @@
 
     <div>
 
-        <c:if test="${sessionScope.user != null }">
-            Saldo: ${sessionScope.user.balance},-
-            ${sessionScope.user.email}
-        </c:if>
-
         <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
         <c:set var="isNotLoginPage" value="${!fn:endsWith(thisPage,'loginpage.jsp')}"/>
         <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
+
+        <c:if test="${isNotLoginPage && isNotRegisterPage}">
+            <c:if test="${sessionScope.user != null }">
+                Saldo: ${sessionScope.user.balance},-
+                ${sessionScope.user.email}
+            </c:if>
+        </c:if>
 
         <c:if test="${isNotLoginPage && isNotRegisterPage}">
             <c:if test="${sessionScope.user != null }">
@@ -59,10 +61,32 @@
                 href="${pageContext.request.contextPath}/fc/logoutcommand">Logout</a>
             </c:if>
             <c:if test="${sessionScope.user == null }">
-                <a type="button" class="btn btn-sm  btn-outline-secondary"
+               <!-- <a type="button" class="btn btn-sm  btn-outline-secondary"
                    href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
                 <a type="button" class="btn btn-sm  btn-outline-secondary"
-                   href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
+                   href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>-->
+                <!--Dynamisk login/signup-->
+                <div class="dropdown-menu-left">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" id="dropdownLogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownLogin">
+                        <form class="px-4 py-3" action="${pageContext.request.contextPath}/fc/logincommand" method="post">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="Indtast email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required placeholder="Indtast password">
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Login</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/fc/registerpage">Ikke registeret endnu?</a>
+                        <!--<a class="dropdown-item" href="#">Forgot password?</a>-->
+                    </div>
+                </div>
             </c:if>
     </div>
     </c:if>
@@ -84,5 +108,8 @@
 </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>
 </html>

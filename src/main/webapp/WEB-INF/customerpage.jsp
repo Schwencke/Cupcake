@@ -10,9 +10,14 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
-        Role: ${sessionScope.role}
+        <h1>Hej ${sessionScope.user.firstname} - Velkommen til Olsker Cupcakes!</h1>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h2><a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Gå til forsiden for at bestille vores dejlige cupcakes</a></h2>
     </jsp:body>
 
 </t:genericpage>
