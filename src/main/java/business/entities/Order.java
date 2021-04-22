@@ -9,6 +9,14 @@ public class Order {
     int statusId;
     Timestamp created;
 
+    public Order() {
+    }
+
+    public Order(int userId, int priceTotal) {
+        this.userId = userId;
+        this.priceTotal = priceTotal;
+    }
+
     public Order(int orderId, int userId, int priceTotal) {
         this.orderId = orderId;
         this.userId = userId;

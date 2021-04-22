@@ -6,6 +6,7 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.OrderMapper;
 
+
 import java.util.List;
 
 public class OrderFacade {
@@ -13,6 +14,14 @@ public class OrderFacade {
 
     public OrderFacade(Database database) {
         this.orderMapper = new OrderMapper(database);
+    }
+
+    public void createOrder(Order order) throws UserException {
+        orderMapper.createOrder(order);
+    }
+
+    public void createOrderLine(OrderLine orderLine) throws UserException {
+        orderMapper.createOrderLine(orderLine);
     }
 
     public List<Order> getAllOrders() throws UserException {

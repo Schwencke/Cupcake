@@ -25,19 +25,19 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
 
         orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
 
-        String topping = request.getParameter("topping");
         String bottom = request.getParameter("bottom");
-        String[] toppingArray = topping.split(",");
+        String topping = request.getParameter("topping");
         String[] bottomArray = bottom.split(",");
-        int price = Integer.parseInt(toppingArray[1]) + Integer.parseInt(bottomArray[1]);
-        topping = toppingArray[0];
+        String[] toppingArray = topping.split(",");
+        int price = Integer.parseInt(bottomArray[1]) + Integer.parseInt(toppingArray[1]);
         bottom = bottomArray[0];
+        topping = toppingArray[0];
         int amount = Integer.parseInt(request.getParameter("amount"));
 
         if (orderLineList == null) {
             orderLineList = new ArrayList<>();
         }
-        orderLineList.add(new OrderLine(topping, bottom, price, amount));
+        orderLineList.add(new OrderLine(orderId, bottom, topping, price, amount));
 
         int priceTotal = 0;
         for (OrderLine orderLine : orderLineList) {

@@ -4,6 +4,7 @@ import business.entities.Order;
 import business.entities.OrderLine;
 import business.exceptions.UserException;
 
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,24 @@ public class OrderMapper {
                 ids.next();
                 int orderId = ids.getInt(1);
                 order.setOrderId(orderId);
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public void createOrderLine(OrderLine orderLine) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO `order_line` (order_id, quantity, bottom_id, topping_id) VALUES (?, ?, ?, ?)";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, orderLine.getOrderId());
+                ps.setInt(2, orderLine.getAmount());
+                ps.setString(3, orderLine.getBottom());
+                ps.setString(4, orderLine.getTopping());
+                ps.executeUpdate();
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
@@ -86,8 +105,6 @@ public class OrderMapper {
     }
 
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {
-        List<OrderLine> orderLineList = new ArrayList<>();
-
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM `order_line` WHERE `order_id` = ?";
 
@@ -107,8 +124,4 @@ public class OrderMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
-
-
-
-//GetALLOrderLinesById
 }
