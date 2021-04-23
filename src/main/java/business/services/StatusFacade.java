@@ -1,6 +1,5 @@
 package business.services;
 
-import business.entities.Order;
 import business.entities.Status;
 import business.exceptions.UserException;
 import business.persistence.Database;

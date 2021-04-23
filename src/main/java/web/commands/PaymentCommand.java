@@ -47,7 +47,7 @@ public class PaymentCommand extends CommandProtectedPage {
             }
             user.setBalance(balance - priceTotal);
             userFacade.updateBalance(userId, user.getBalance());
-            orderFacade.updateStatusSuccess(order.getOrderId());
+            orderFacade.updateStatus(order.getOrderId(), 2);
             request.getSession().removeAttribute("orderlinecount");
             request.getSession().removeAttribute("orderlinelist");
             request.getSession().removeAttribute("pricetotal");

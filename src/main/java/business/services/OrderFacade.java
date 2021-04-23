@@ -36,7 +36,7 @@ public class OrderFacade {
         return orderMapper.getAllOrderLinesById(orderId);
     }
 
-    public void updateStatusSuccess(int orderId) throws UserException{
-        orderMapper.updateStatusSuccess(orderId);
+    public void updateStatus(int orderId, int statusId) throws UserException{
+        orderMapper.updateStatus(orderId, statusId);
     }
 }

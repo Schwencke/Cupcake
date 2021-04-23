@@ -56,13 +56,13 @@ public class OrderMapper {
         }
     }
 
-    public void updateStatusSuccess(int orderId) throws UserException{
+    public void updateStatus(int orderId, int statusId) throws UserException{
 
         try (Connection connection = database.connect()) {
             String sql = "UPDATE `order` SET `status_id`=? WHERE `order_id`=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, 2);
+                ps.setInt(1, statusId);
                 ps.setInt(2, orderId);
                 ps.executeUpdate();
             } catch (SQLException ex) {
