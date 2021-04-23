@@ -1,10 +1,8 @@
 package web.commands;
 
-import business.entities.Order;
 import business.entities.OrderLine;
 import business.persistence.CakeMapper;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddToBasketCommand extends CommandUnprotectedPage {
-    Order order;
     protected CakeMapper cakeMapper;
     List<OrderLine> orderLineList;
 
@@ -46,6 +43,7 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
             priceTotal += orderLine.getPrice() * orderLine.getAmount();
         }
 
+        request.getSession().setAttribute("orderlinecount", orderLineList.size());
         request.getSession().setAttribute("pricetotal", priceTotal);
         request.getSession().setAttribute("orderlinelist", orderLineList);
 
