@@ -10,21 +10,23 @@
     </jsp:attribute>
     <jsp:body>
 <form action="${pageContext.request.contextPath}/fc/finduser">
-    <label for="searchforuser">Søg efter bruger</label> <br>
-    <input type="text" name="searchforuser" id="searchforuser" placeholder="indtast bruger id">
+    <label for="searchid">Søg efter bruger</label> <br>
+    <input type="text" name="searchforuser" id="searchid" placeholder="indtast bruger id">
     <button type="submit">Søg</button>
+
 </form>
+
         <table class="table table-striped">
             <thead>
             <th>Order nr.</th>
             <th>Pris</th>
             <th>Status</th>
             </thead>
-            <c:forEach var="orderlistbyuser" items="${sessionScope.orderlistbyuser}">
+            <c:forEach var="orderlistbyuser" items="${sessionScope.searchorderlist}">
                 <tr>
-                    <td>${orderlist.orderno}</td>
-                    <td>${orderlist.totalprice}</td>
-                    <td>${orderlist.status}</td>
+                    <td>${orderlistbyuser.orderId}</td>
+                    <td>${orderlistbyuser.priceTotal}</td>
+                    <td>${orderlistbyuser.statusId}</td>
                 </tr>
             </c:forEach>
         </table>
