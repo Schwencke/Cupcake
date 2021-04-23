@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#7952b3">
 </head>
 <div class="container-fluid">
-    <div class="jumbotron-fluid bg-light">
+    <div class="jumbotron-fluid ml-5 mr-5 justify-content-center bg-light">
         <!-- <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid"> -->
 
         <!--
@@ -104,7 +104,6 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/fc/registerpage">Ikke
                                 registeret endnu?</a>
-                            <!--<a class="dropdown-item" href="#">Forgot password?</a>-->
                         </div>
                     </div>
                 </c:if>
@@ -112,11 +111,12 @@
             </c:if>
         </header>
         <div id="body" class="jumbotron-fluid" style="min-height: 20vh;">
-
             <!--  <div id="body" class="container" style="min-height: 20vh;"> -->
             <jsp:doBody/>
-        </div>
 
+
+
+        </div>
 
         <!-- Footer -->
         <div class="container">
@@ -136,5 +136,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

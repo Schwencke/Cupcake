@@ -13,10 +13,10 @@
     </jsp:attribute>
 
     <jsp:body>
-
-        <h2>Our Cool Site</h2>
-
-        <div style="margin-top: 3em;margin-bottom: 3em;">
+        <div class="row justify-content-center" >
+        <div class="col-sm-6">
+        <div class="display-2 mt-5">Our Cool Site</div>
+        <div class="lead mb-4 mt-2">
             CUPCAKES GALOOORE
         </div>
         <form method="post" action="${pageContext.request.contextPath}/fc/addtobasketcommand">
@@ -27,20 +27,25 @@
                         <option value="${bottom.flavor},${bottom.price},${bottom.bottomId}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
                     </c:forEach>
                 </select>
-
+            </div>
+            <div class="form-group mt-2">
                 <label class="form-check-label" for="topping_id">Vælg Topping:</label><br>
                 <select class="form-control" name="topping" id="topping_id">
                     <c:forEach var="topping" items="${applicationScope.toppinglist}">
                         <option value="${topping.flavor},${topping.price},${topping.toppingId}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
                     </c:forEach>
                 </select>
-
+            </div>
+            <div class="row justify-content-center" >
+            <div class="form-group mt-2">
                 <label for="amount">Antal:</label>
-                <input id="amount" type="number" value="1" name="amount">
+                <input class="form-control mr-3" id="amount" type="number" value="1" name="amount">
 
-                <button type="submit">Læg i kurven</button>
+                <button class="btn-outline-primary mt-2" type="submit">Læg i kurven</button>
+            </div>
             </div>
         </form>
+
 
         <c:if test="${requestScope.msg != null }">
             <p style="color:green">
