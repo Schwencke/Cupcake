@@ -9,7 +9,8 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <a href="${pageContext.request.contextPath}/fc/orderspage">Rediger order</a>
-        <a href="${pageContext.request.contextPath}/fc/userspage">Opdater bruger saldo</a>
+
+        <a href="${pageContext.request.contextPath}/fc/userspage">Opdater brugere</a>
+        <a href="${pageContext.request.contextPath}/fc/orderspage">Opdater ordre</a>
     </jsp:body>
 </t:genericpage>

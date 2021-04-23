@@ -2,6 +2,7 @@ package web.commands;
 
 import business.entities.Order;
 import business.entities.User;
+import business.exceptions.UserException;
 import business.persistence.UserMapper;
 import business.services.OrderFacade;
 import business.services.UserFacade;
@@ -9,6 +10,7 @@ import business.services.UserFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class EmployeeCommand extends CommandProtectedPage {
 
@@ -24,19 +26,11 @@ public class EmployeeCommand extends CommandProtectedPage {
 
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
 
-        User user = (User) session.getAttribute("user");
-
-
-
-        int userId = user.getUserId();
-        String firstname = user.getFirstname();
-        String lastname = user.getLastname();
-        String phoneNo = user.getPhoneNo();
-        String email = user.getEmail();
-        int saldo = user.getBalance();
+        List<User> userList = userFacade.getAllUsers();
+        session.setAttribute("userlist", userList);
 
         return pageToShow;
     }

@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Balance Page
+         Users Page
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -21,16 +21,16 @@
             </thead>
             <c:forEach var="user" items="${sessionScope.userlist}">
                 <tr>
-                    <td>${user.topping}</td>
+                    <td>${user.userId}</td>
+                    <td>${user.roleId}</td>
+                    <td>${user.firstname}</td>
+                    <td>${user.lastname}</td>
+                    <td>${user.phoneNo}</td>
+                    <td>${user.balance},-</td>
+                    <td>${user.email}</td>
                 </tr>
             </c:forEach>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Total pris: ${sessionScope.pricetotal},-</td>
-            </tr>
         </table>
-
+        <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>
 </t:genericpage>
