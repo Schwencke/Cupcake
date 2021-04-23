@@ -38,16 +38,21 @@
                 <c:if test="${addHomeLink == null }">
                     <a class="p-2 text-dark" href="<%=request.getContextPath()%>">Home</a>
                 </c:if>
-                <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderhistorypage">Orders</a>
-                <c:choose>
-                    <c:when test="${sessionScope.orderlinecount > 0}">
-                        <a class="p-2 text-dark"
-                           href="${pageContext.request.contextPath}/fc/basketpage">Kurv(${sessionScope.orderlinecount})</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/basketpage">Kurv</a>
-                    </c:otherwise>
-                </c:choose>
+                <c:if test="${sessionScope.role == 'customer' }">
+                    <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/orderhistorypage">Orders</a>
+                </c:if>
+                <c:if test="${sessionScope.role != 'employee' }">
+                    <c:choose>
+                        <c:when test="${sessionScope.orderlinecount > 0}">
+                            <a class="p-2 text-dark"
+                               href="${pageContext.request.contextPath}/fc/basketpage">Kurv(${sessionScope.orderlinecount})</a>
+                        </c:when>
+                        <c:otherwise>
+
+                            <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/basketpage">Kurv</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:if>
                 <c:if test="${sessionScope.role == 'employee' }">
                     <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/employeepage">Admin</a>
                 </c:if>
@@ -59,7 +64,9 @@
                 <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
 
                 <c:if test="${sessionScope.user != null }">
+                <c:if test="${sessionScope.role == 'customer' }">
                     Saldo: ${sessionScope.user.balance},-
+                </c:if>
                     ${sessionScope.user.email}
                 </c:if>
 
