@@ -39,5 +39,4 @@ public class RegisterCommand extends CommandUnprotectedPage {
             return "registerpage";
         }
     }
-
 }

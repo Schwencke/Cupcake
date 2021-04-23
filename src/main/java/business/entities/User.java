@@ -14,12 +14,22 @@ public class User {
     public User() {
     }
 
-    public String getRole() {
-        return role;
+    public User(String firstname, String lastname, String phoneNo, String email, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email) {
+        this.userId = userId;
+        this.roleId = roleId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNo = phoneNo;
+        this.balance = balance;
+        this.email = email;
     }
 
     public User(int userId, int roleId, String firstname, String lastname, String phoneNo, int balance, String email, String password) {
@@ -33,12 +43,12 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstname, String lastname, String phoneNo,  String email, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phoneNo = phoneNo;
-        this.email = email;
-        this.password = password;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getUserId() {
