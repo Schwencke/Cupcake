@@ -16,9 +16,9 @@ public class EmployeeCommand extends CommandProtectedPage {
         this.userMapper = new UserMapper(database);
     }
 
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-
 
 
         return pageToShow;
