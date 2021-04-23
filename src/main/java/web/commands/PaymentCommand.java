@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Order;
+import business.entities.OrderLine;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.OrderFacade;
@@ -9,12 +10,14 @@ import business.services.UserFacade;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 public class PaymentCommand extends CommandProtectedPage {
 
     private UserFacade userFacade;
     private OrderFacade orderFacade;
+    Order order;
 
     public PaymentCommand(String pageToShow, String role) {
         super(pageToShow, role);
@@ -34,18 +37,23 @@ public class PaymentCommand extends CommandProtectedPage {
         int priceTotal = (int) session.getAttribute("pricetotal");
 
         if (balance > priceTotal) {
-            Order order = (Order) session.getAttribute("order");
+            order = orderFacade.createOrder(new Order(userId, priceTotal));
+            List<OrderLine> orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
+            for (OrderLine orderLine : orderLineList) {
+                orderLine.setOrderId(order.getOrderId());
+            }
+            for (OrderLine orderLine : orderLineList) {
+                orderFacade.createOrderLine(orderLine);
+            }
             user.setBalance(balance - priceTotal);
             userFacade.updateBalance(userId, user.getBalance());
             orderFacade.updateStatusSuccess(order.getOrderId());
             request.getSession().removeAttribute("orderlinecount");
             request.getSession().removeAttribute("orderlinelist");
             request.getSession().removeAttribute("pricetotal");
-
-            //TODO : PaymentstatusUpdater
         } else {
             request.setAttribute("error", "Sufficient funds required!");
-            return "paymentpage";
+            return "checkoutpage";
         }
         return pageToShow;
     }
