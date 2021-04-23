@@ -89,21 +89,22 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int orderId = rs.getInt("order_id");
                     int priceTotal = rs.getInt("price_total");
                     int statusId = rs.getInt("status_id");
                     Timestamp created = rs.getTimestamp("created");
                     orderList.add(new Order(orderId, userId, priceTotal, statusId, created));
-                    return orderList;
                 }
-                throw new UserException("Ordre ID findes ikke for user_id = " + userId);
+                return orderList;
+
             } catch (SQLException ex) {
-                throw new UserException(ex.getMessage());
+                throw new UserException("Ordre ID findes ikke for user_id = " + userId);
             }
         } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
+
     }
 
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {
