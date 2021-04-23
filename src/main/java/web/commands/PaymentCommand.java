@@ -1,23 +1,20 @@
 package web.commands;
 
 import business.entities.Order;
-import business.entities.OrderLine;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.OrderFacade;
-import business.services.StatusFacade;
 import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 
 public class PaymentCommand extends CommandProtectedPage {
 
     private UserFacade userFacade;
     private OrderFacade orderFacade;
-    private List<OrderLine> orderLineList;
 
     public PaymentCommand(String pageToShow, String role) {
         super(pageToShow, role);
