@@ -86,7 +86,9 @@ public class OrderMapper {
                     int orderId = rs.getInt("order_id");
                     int userId = rs.getInt("user_id");
                     int priceTotal = rs.getInt("price_total");
-                    orderList.add(new Order(orderId, userId, priceTotal));
+                    int statusId = rs.getInt("status_id");
+                    Timestamp created = rs.getTimestamp("created");
+                    orderList.add(new Order(orderId, userId, priceTotal, statusId, created));
                 }
                 return orderList;
             } catch (SQLException ex) {
@@ -120,7 +122,6 @@ public class OrderMapper {
         } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
-
     }
 
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {

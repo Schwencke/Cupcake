@@ -9,27 +9,30 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-<form action="${pageContext.request.contextPath}/fc/finduser">
-    <label for="searchid">Søg efter bruger</label> <br>
-    <input type="text" name="searchforuser" id="searchid" placeholder="indtast bruger id">
-    <button type="submit">Søg</button>
+        <form action="${pageContext.request.contextPath}/fc/showallorders">
+            <label for="searchid">Søg efter bruger</label> <br>
+            <input type="text" name="orderlist" id="searchid" placeholder="indtast bruger id">
+            <button type="submit">Søg</button>
 
-</form>
-
+        </form>
         <table class="table table-striped">
             <thead>
-            <th>Order nr.</th>
+            <th>Ordre nr.</th>
+            <th>Bruger ID</th>
             <th>Pris</th>
+            <th>Oprettet</th>
             <th>Status</th>
             </thead>
-            <c:forEach var="orderlistbyuser" items="${sessionScope.searchorderlist}">
+            <c:forEach var="orderlist" items="${sessionScope.orderlist}">
                 <tr>
-                    <td>${orderlistbyuser.orderId}</td>
-                    <td>${orderlistbyuser.priceTotal}</td>
-                    <td>${orderlistbyuser.statusId}</td>
+                    <td>${orderlist.orderId}</td>
+                    <td>${orderlist.userId}</td>
+                    <td>${orderlist.priceTotal}</td>
+                    <td>${orderlist.created}</td>
+                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
                 </tr>
             </c:forEach>
         </table>
-
+        <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>
 </t:genericpage>

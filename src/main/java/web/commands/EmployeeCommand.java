@@ -3,7 +3,6 @@ package web.commands;
 import business.entities.Order;
 import business.entities.User;
 import business.exceptions.UserException;
-import business.persistence.UserMapper;
 import business.services.OrderFacade;
 import business.services.UserFacade;
 
@@ -16,7 +15,6 @@ public class EmployeeCommand extends CommandProtectedPage {
 
     private UserFacade userFacade;
     private OrderFacade orderFacade;
-    Order order;
 
     public EmployeeCommand(String pageToShow, String role) {
         super(pageToShow, role);
@@ -24,13 +22,15 @@ public class EmployeeCommand extends CommandProtectedPage {
         this.orderFacade = new OrderFacade(database);
     }
 
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
 
         List<User> userList = userFacade.getAllUsers();
         session.setAttribute("userlist", userList);
+
+        List<Order> orderList = orderFacade.getAllOrders();
+        session.setAttribute("orderlist", orderList);
 
         return pageToShow;
     }

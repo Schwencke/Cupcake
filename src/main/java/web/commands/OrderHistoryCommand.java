@@ -15,7 +15,6 @@ public class OrderHistoryCommand extends CommandProtectedPage {
 
     protected OrderFacade orderFacade;
     List<Order> orderList;
-    List<OrderLine> orderLineList;
 
     public OrderHistoryCommand(String pageToShow, String role) {
         super(pageToShow, role);
