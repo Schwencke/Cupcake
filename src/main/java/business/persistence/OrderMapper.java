@@ -65,6 +65,7 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, 2);
                 ps.setInt(2, orderId);
+                ps.executeUpdate();
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
