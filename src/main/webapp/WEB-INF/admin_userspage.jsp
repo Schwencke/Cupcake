@@ -19,12 +19,9 @@
             <th>Saldo</th>
             <th>Email</th>
             </thead>
-            <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
+            <c:forEach var="user" items="${sessionScope.userlist}">
                 <tr>
-                    <td>${orderline.topping}</td>
-                    <td>${orderline.bottom}</td>
-                    <td>${orderline.amount}</td>
-                    <td>${orderline.price},-</td>
+                    <td>${user.topping}</td>
                 </tr>
             </c:forEach>
             <tr>
