@@ -26,6 +26,7 @@ public class ShowAllOrdersCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
 
+
         int userId = Integer.parseInt(request.getParameter("orderlist"));
         orderList = orderFacade.getAllOrdersById(userId);
         session.setAttribute("orderlist", orderList);

@@ -39,4 +39,8 @@ public class OrderFacade {
     public void updateStatus(int orderId, int statusId) throws UserException{
         orderMapper.updateStatus(orderId, statusId);
     }
+
+    public void deleteOrderById(int orderId) throws UserException{
+        orderMapper.deleteOrderById(orderId);
+    }
 }

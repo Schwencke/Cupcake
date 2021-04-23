@@ -30,6 +30,7 @@
                     <td>${orderlist.priceTotal}</td>
                     <td>${orderlist.created}</td>
                     <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
+                    <td><button type="submit" name="delete" value="${orderlist.orderId}">Slet ordre</button></td>
                 </tr>
             </c:forEach>
         </table>
