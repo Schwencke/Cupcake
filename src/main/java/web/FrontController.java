@@ -1,11 +1,13 @@
 package web;
 
 import business.entities.Bottom;
+import business.entities.Role;
 import business.entities.Status;
 import business.entities.Topping;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.CakeFacade;
+import business.services.RoleFacade;
 import business.services.StatusFacade;
 import web.commands.*;
 
@@ -67,6 +69,15 @@ public class FrontController extends HttpServlet {
             throw new ServletException(ex.getMessage());
         }
         application.setAttribute("statuslist", statusList);
+
+        RoleFacade roleFacade = new RoleFacade(database);
+        List<Role> roleList ;
+        try {
+            roleList = roleFacade.getAllRoles();
+        } catch (UserException ex) {
+            throw new ServletException(ex.getMessage());
+        }
+        application.setAttribute("rolelist", roleList);
     }
 
     protected void processRequest(

@@ -22,7 +22,7 @@
             <c:forEach var="user" items="${sessionScope.userlist}">
                 <tr>
                     <td>${user.userId}</td>
-                    <td>${user.roleId}</td>
+                    <td>${applicationScope.rolelist.get(user.roleId-1).role}</td>
                     <td>${user.firstname}</td>
                     <td>${user.lastname}</td>
                     <td>${user.phoneNo}</td>
