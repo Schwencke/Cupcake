@@ -37,6 +37,7 @@ public abstract class Command
         commands.put("userspage", new EmployeeCommand("admin_userspage", "employee"));
         commands.put("showallorders", new ShowAllOrdersCommand("admin_orderspage", "employee"));
         commands.put("balanceupdate", new BalanceUpdateCommand("admin_userspage", "employee"));
+        commands.put("removefrombasketcommand", new RemoveFromBasketCommand("basketpage"));
     }
 
     public static Command fromPath(

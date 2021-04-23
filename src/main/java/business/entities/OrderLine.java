@@ -1,6 +1,7 @@
 package business.entities;
 
 public class OrderLine {
+    int orderLineId;
     int orderId;
     String bottom;
     int bottomId;
@@ -9,7 +10,8 @@ public class OrderLine {
     int price;
     int amount;
 
-    public OrderLine(String bottom, int bottomId, String topping, int toppingId, int price, int amount) {
+    public OrderLine(int orderLineId, String bottom, int bottomId, String topping, int toppingId, int price, int amount) {
+        this.orderLineId = orderLineId;
         this.bottom = bottom;
         this.bottomId = bottomId;
         this.topping = topping;
@@ -18,19 +20,20 @@ public class OrderLine {
         this.amount = amount;
     }
 
-    public OrderLine(int orderId, String bottom, String topping, int price, int amount) {
-        this.orderId = orderId;
-        this.bottom = bottom;
-        this.topping = topping;
-        this.price = price;
-        this.amount = amount;
-    }
 
     public OrderLine(int orderId, int bottomId, int toppingId, int amount) {
         this.orderId = orderId;
         this.bottomId = bottomId;
         this.toppingId = toppingId;
         this.amount = amount;
+    }
+
+    public int getOrderLineId() {
+        return orderLineId;
+    }
+
+    public void setOrderLineId(int orderLineId) {
+        this.orderLineId = orderLineId;
     }
 
     public int getBottomId() {

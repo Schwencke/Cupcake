@@ -12,6 +12,7 @@ import java.util.List;
 public class AddToBasketCommand extends CommandUnprotectedPage {
     protected CakeMapper cakeMapper;
     List<OrderLine> orderLineList;
+    int orderLineId;
 
     public AddToBasketCommand(String pageToShow) {
         super(pageToShow);
@@ -22,6 +23,7 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
+
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
         String[] bottomArray = bottom.split(",");
@@ -35,13 +37,16 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
 
         if (orderLineList == null) {
             orderLineList = new ArrayList<>();
+            orderLineId = 0;
         }
-        orderLineList.add(new OrderLine(bottom, bottomId, topping, toppingId, price, amount));
+        orderLineId ++;
+        orderLineList.add(new OrderLine(orderLineId, bottom, bottomId, topping, toppingId, price, amount));
 
         int priceTotal = 0;
         for (OrderLine orderLine : orderLineList) {
             priceTotal += orderLine.getPrice() * orderLine.getAmount();
         }
+
 
         request.getSession().setAttribute("orderlinecount", orderLineList.size());
         request.getSession().setAttribute("pricetotal", priceTotal);
