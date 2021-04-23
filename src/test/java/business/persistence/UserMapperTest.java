@@ -46,4 +46,13 @@ public class UserMapperTest {
         assertThrows(UserException.class, () ->
         {User user = userFacade.login( "thomasovergaard@hotmail.com", "asfasf" ); });
     }
+
+    @Test
+    public User createUser(String firstname, String lastname, String phoneNo, String email, String password) throws UserException, SQLException {
+        User user = userFacade.createUser("Ib","Ibsen","99887766","Ib@ibber.dk", "1234");
+        assertNotNull(user);
+        userFacade.login("Ib@ibber.dk", "1234");
+        assertEquals("99887766", user.getPhoneNo());
+        return user;
+    }
 }
