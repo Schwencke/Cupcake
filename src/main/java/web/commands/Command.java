@@ -35,7 +35,8 @@ public abstract class Command
         commands.put("orderhistorypage", new OrderHistoryCommand("orderhistorypage", "customer"));
         commands.put("orderspage", new EmployeeCommand("admin_orderspage", "employee"));
         commands.put("userspage", new EmployeeCommand("admin_userspage", "employee"));
-        commands.put("finduser", new findOrdersByIdCommand("admin_orderspage", "employee"));
+        commands.put("finduser", new FindOrdersByIdCommand("admin_orderspage", "employee"));
+        commands.put("balanceupdate", new BalanceUpdateCommand("admin_userspage", "employee"));
     }
 
     public static Command fromPath(

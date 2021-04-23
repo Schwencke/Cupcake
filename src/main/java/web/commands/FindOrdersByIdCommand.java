@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class findOrdersByIdCommand extends CommandProtectedPage {
+public class FindOrdersByIdCommand extends CommandProtectedPage {
 
     protected OrderFacade orderFacade;
     List<Order> orderList;
-    public findOrdersByIdCommand(String pageToShow, String role) {
+    public FindOrdersByIdCommand(String pageToShow, String role) {
         super(pageToShow, role);
         this.orderFacade = new OrderFacade(database);
     }
