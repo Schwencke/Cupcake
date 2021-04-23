@@ -57,6 +57,25 @@ public class OrderMapper {
         }
     }
 
+    public void updateStatusSuccess(int orderId) throws UserException{
+
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE `order` SET `status_id`=? WHERE `order_id`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, 2);
+                ps.setInt(2, orderId);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+
+    }
+
+
     public List<Order> getAllOrders() throws UserException {
         List<Order> orderList = new ArrayList<>();
 
