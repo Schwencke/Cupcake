@@ -5,6 +5,7 @@ import business.persistence.Database;
 import business.persistence.UserMapper;
 import business.exceptions.UserException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserFacade {
@@ -14,7 +15,7 @@ public class UserFacade {
         userMapper = new UserMapper(database);
     }
 
-    public User login(String email, String password) throws UserException {
+    public User login(String email, String password) throws UserException, SQLException {
         return userMapper.login(email, password);
     }
 
