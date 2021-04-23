@@ -60,7 +60,7 @@ public class OrderMapper {
     public void updateStatusSuccess(int orderId) throws UserException{
 
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE 'order' SET `status_id`=? WHERE `order_id`=?";
+            String sql = "UPDATE `order` SET `status_id`=? WHERE `order_id`=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, 2);
