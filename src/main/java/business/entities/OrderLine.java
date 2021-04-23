@@ -18,6 +18,21 @@ public class OrderLine {
         this.amount = amount;
     }
 
+    public OrderLine(int orderId, String bottom, String topping, int price, int amount) {
+        this.orderId = orderId;
+        this.bottom = bottom;
+        this.topping = topping;
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public OrderLine(int orderId, int bottomId, int toppingId, int amount) {
+        this.orderId = orderId;
+        this.bottomId = bottomId;
+        this.toppingId = toppingId;
+        this.amount = amount;
+    }
+
     public int getBottomId() {
         return bottomId;
     }
@@ -32,21 +47,6 @@ public class OrderLine {
 
     public void setToppingId(int toppingId) {
         this.toppingId = toppingId;
-    }
-
-    public OrderLine(int orderId, String bottom, String topping, int price, int amount) {
-        this.orderId = orderId;
-        this.bottom = bottom;
-        this.topping = topping;
-        this.price = price;
-        this.amount = amount;
-    }
-
-    public OrderLine(String bottom, String topping, int price, int amount) {
-        this.bottom = bottom;
-        this.topping = topping;
-        this.price = price;
-        this.amount = amount;
     }
 
     public String getTopping() {
@@ -65,7 +65,9 @@ public class OrderLine {
         return amount;
     }
 
-    public int getOrderId() { return orderId; }
+    public int getOrderId() {
+        return orderId;
+    }
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;

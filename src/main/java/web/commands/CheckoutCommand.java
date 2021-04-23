@@ -34,7 +34,6 @@ public class CheckoutCommand extends CommandProtectedPage {
         }
         for (OrderLine orderLine : orderLineList) {
             orderFacade.createOrderLine(orderLine);
-
         }
 
         return pageToShow;

@@ -35,4 +35,8 @@ public class OrderFacade {
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {
         return orderMapper.getAllOrderLinesById(orderId);
     }
+
+    public void updateStatusSuccess(int orderId) throws UserException{
+        orderMapper.updateStatusSuccess(orderId);
+    }
 }

@@ -4,7 +4,6 @@ import business.entities.Order;
 import business.entities.OrderLine;
 import business.exceptions.UserException;
 
-import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +56,24 @@ public class OrderMapper {
         }
     }
 
+    public void updateStatusSuccess(int orderId) throws UserException{
+
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE `order` SET `status_id`=? WHERE `order_id`=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, 2);
+                ps.setInt(2, orderId);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+
     public List<Order> getAllOrders() throws UserException {
         List<Order> orderList = new ArrayList<>();
 
@@ -97,7 +114,6 @@ public class OrderMapper {
                     orderList.add(new Order(orderId, userId, priceTotal, statusId, created));
                 }
                 return orderList;
-
             } catch (SQLException ex) {
                 throw new UserException("Ordre ID findes ikke for user_id = " + userId);
             }
@@ -108,18 +124,21 @@ public class OrderMapper {
     }
 
     public List<OrderLine> getAllOrderLinesById(int orderId) throws UserException {
+        List<OrderLine> orderLineList = new ArrayList<>();
+
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM `order_line` WHERE `order_id` = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderId);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int quantity = rs.getInt("quantity");
-                    int bottom = rs.getInt("bottom");
-                    int topping = rs.getInt("topping");
+                    int bottomId = rs.getInt("bottom");
+                    int toppingId = rs.getInt("topping");
+                    orderLineList.add(new OrderLine(orderId, bottomId, toppingId, quantity));
                 }
-                throw new UserException("Ordre ID findes ikke for order_id = " + orderId);
+                return  orderLineList;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
