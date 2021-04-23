@@ -14,7 +14,7 @@
             <input type="text" name="orderlist" id="searchid" placeholder="indtast bruger id">
             <button type="submit">Søg</button>
 
-        </form>
+
         <table class="table table-striped">
             <thead>
             <th>Ordre nr.</th>
@@ -24,16 +24,24 @@
             <th>Status</th>
             </thead>
             <c:forEach var="orderlist" items="${sessionScope.orderlist}">
+                <c:if test="${orderlist.statusId != 3}">
                 <tr>
                     <td>${orderlist.orderId}</td>
-                    <td>${orderlist.userId}</td>
+                    <td><input type="hidden" name="user_id" value="${orderlist.userId}">${orderlist.userId}</td>
                     <td>${orderlist.priceTotal}</td>
                     <td>${orderlist.created}</td>
                     <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
-                    <td><button type="submit" name="delete" value="${orderlist.orderId}">Slet ordre</button></td>
+                    <c:if test="${orderlist.statusId == 1}">
+                    <td><button type="submit" name="delete"  value="${orderlist.orderId}">Slet ordre</button></td>
+                    </c:if>
+                    <c:if test="${orderlist.statusId == 2}">
+                        <td><button type="submit" name="delete" disabled value="${orderlist.orderId}">Slet ordre</button></td>
+                    </c:if>
                 </tr>
+                </c:if>
             </c:forEach>
-        </table>
+        </table></form>
+
         <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>
 </t:genericpage>

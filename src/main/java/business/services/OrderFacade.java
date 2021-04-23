@@ -40,7 +40,4 @@ public class OrderFacade {
         orderMapper.updateStatus(orderId, statusId);
     }
 
-    public void deleteOrderById(int orderId) throws UserException{
-        orderMapper.deleteOrderById(orderId);
-    }
 }
