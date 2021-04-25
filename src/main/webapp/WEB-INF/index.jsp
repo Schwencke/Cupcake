@@ -13,46 +13,48 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="row justify-content-center" >
+        <div class="row justify-content-center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <img class="img-fluid" alt="Cupcakes" src="${pageContext.request.contextPath}/images/Background_small.jpg">
+            </div>
+            <div class="col-sm-1"></div> </div>
+        <div class="row justify-content-center">
         <div class="col-sm-6">
-        <div class="display-2 mt-5">Our Cool Site</div>
-        <div class="lead mb-4 mt-2">
-            CUPCAKES GALOOORE
-        </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/addtobasketcommand">
-            <div class="form-group mt-2">
-                <label class="form-check-label" for="bottom_id">Vælg Bund:</label><br>
-                <select class="form-control" name="bottom" id="bottom_id">
-                    <c:forEach var="bottom" items="${applicationScope.bottomlist}">
-                        <option value="${bottom.flavor},${bottom.price},${bottom.bottomId}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
-                    </c:forEach>
-                </select>
-            </div>
-            <div class="form-group mt-2">
-                <label class="form-check-label" for="topping_id">Vælg Topping:</label><br>
-                <select class="form-control" name="topping" id="topping_id">
-                    <c:forEach var="topping" items="${applicationScope.toppinglist}">
-                        <option value="${topping.flavor},${topping.price},${topping.toppingId}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
-                    </c:forEach>
-                </select>
-            </div>
-            <div class="row justify-content-center" >
-            <div class="form-group mt-2">
-                <label for="amount">Antal:</label>
-                <input class="form-control mr-3" id="amount" type="number" value="1" name="amount">
+            <form method="post" action="${pageContext.request.contextPath}/fc/addtobasketcommand">
+                <div class="form-group mt-2">
+                    <label class="form-check-label" for="bottom_id"></label><br>
+                    <select class="form-control" name="bottom" id="bottom_id">
+                        <c:forEach var="bottom" items="${applicationScope.bottomlist}">
+                            <option value="${bottom.flavor},${bottom.price},${bottom.bottomId}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-check-label" for="topping_id"></label><br>
+                    <select class="form-control" name="topping" id="topping_id">
+                        <c:forEach var="topping" items="${applicationScope.toppinglist}">
+                            <option value="${topping.flavor},${topping.price},${topping.toppingId}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="form-group mt-2">
+                        <label for="amount">Antal:</label>
+                        <input class="form-control mr-3" id="amount" type="number" value="1" name="amount">
 
-                <button class="btn-outline-primary mt-2" type="submit">Læg i kurven</button>
-            </div>
-            </div>
-        </form>
+                        <button class="btn btn-outline-secondary mt-2" type="submit">Læg i kurven</button>
+                    </div>
+                </div>
+            </form>
 
 
-        <c:if test="${requestScope.msg != null }">
-            <p style="color:green">
-                    ${requestScope.msg}
-            </p>
-        </c:if>
-<!--
+            <c:if test="${requestScope.msg != null }">
+                <p style="color:green">
+                        ${requestScope.msg}
+                </p>
+            </c:if>
+            <!--
         <c:if test="${sessionScope.role == 'employee' }">
             <p style="font-size: larger">This is what you can do,
                 since your are logged in as an employee</p>

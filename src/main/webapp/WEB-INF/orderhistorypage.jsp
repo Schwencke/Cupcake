@@ -10,7 +10,10 @@
     </jsp:attribute>
 
     <jsp:body>
-         <table class="table table-striped">
+        <div class="row">
+        <div class="col-sm-3 col-md-2 col-lg-1"></div>
+        <div class="col-sm-6 col-md-8 col-lg-10">
+         <table class="table table-light table-striped table-hover">
             <thead>
             <th>OrdreNo:</th>
             <th>Pris Total:</th>
@@ -32,7 +35,9 @@
                 <td></td>
             </tr>
         </table>
-
+        </div>
+        <div class="col-sm-3 col-md-2 col-lg-1"></div>
+        </div>
         <c:if test="${requestScope.error != null }">
             <p style="color:red">
                     ${requestScope.error}

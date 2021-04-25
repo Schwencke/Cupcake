@@ -19,18 +19,20 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
 </head>
-<div class="container-fluid">
-    <div class="jumbotron-fluid ml-5 mr-5 justify-content-center bg-light">
-        <!-- <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid"> -->
+<body>
+<div class="container-fluid justify-content-center">
+    <div class="jumbotron-fluid ml-5 mr-5 justify-content-center bg-light ">
+
 
         <!--
             This header is inspired by this bootstrap
             example: https://getbootstrap.com/docs/5.0/examples/pricing/
         -->
         <header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white border-bottom shadow-sm">
+
             <div class="h5 my-0 me-md-auto fw-normal">
-                <p>Demo Project for DAT 2. semester</p>
-                <p style="font-size: larger">
+                <p class="display-2">Olsker cupcakes</p>
+                <p class="lead">
                     <jsp:invoke fragment="header"/>
                 </p>
             </div>
@@ -123,6 +125,7 @@
             <br>
             <hr>
             <br>
+            <p align="center"> Olsker cupcakes - Kirkevej 25 - 3770 Olsker - 56951566 - cupper@cupcakes.dk</p>
             <jsp:invoke fragment="footer"/>
         </div>
     </div>
