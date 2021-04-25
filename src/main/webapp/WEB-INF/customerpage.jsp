@@ -4,21 +4,14 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Customer Page
+         Kunde side
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hej ${sessionScope.user.firstname} - Velkommen til Olsker Cupcakes!</h1>
-
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <h2><a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Gå til forsiden for at bestille vores
-            dejlige cupcakes</a></h2>
+        <h1>Hej ${sessionScope.user.firstname}</h1>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Gå til forsiden for at bestille vores dejlige cupcakes</a>
     </jsp:body>
 
 </t:genericpage>

@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Users Page
+         Admin side over brugere
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -42,6 +42,6 @@
                     ${requestScope.msg}
             </p>
         </c:if>
-        <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>
 </t:genericpage>

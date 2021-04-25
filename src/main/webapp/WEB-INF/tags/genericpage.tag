@@ -19,18 +19,18 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
 </head>
-<div class="container-fluid">
-    <div class="jumbotron-fluid bg-light">
-        <!-- <img src="${pageContext.request.contextPath}/images/cupcakes.jpg" class="img-fluid"> -->
-
+<body>
+<div class="container-fluid justify-content-center">
+    <div class="jumbotron-fluid ml-5 mr-5 justify-content-center bg-light ">
         <!--
             This header is inspired by this bootstrap
             example: https://getbootstrap.com/docs/5.0/examples/pricing/
         -->
         <header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white border-bottom shadow-sm">
+
             <div class="h5 my-0 me-md-auto fw-normal">
-                <p>Demo Project for DAT 2. semester</p>
-                <p style="font-size: larger">
+                <p class="display-2">Olsker cupcakes</p>
+                <p class="lead">
                     <jsp:invoke fragment="header"/>
                 </p>
             </div>
@@ -48,10 +48,12 @@
                                href="${pageContext.request.contextPath}/fc/basketpage">Kurv(${sessionScope.orderlinecount})</a>
                         </c:when>
                         <c:otherwise>
-
                             <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/basketpage">Kurv</a>
                         </c:otherwise>
                     </c:choose>
+                </c:if>
+                <c:if test="${sessionScope.role == 'customer' }">
+                    <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/customerpage">Profil</a>
                 </c:if>
                 <c:if test="${sessionScope.role == 'employee' }">
                     <a class="p-2 text-dark" href="${pageContext.request.contextPath}/fc/employeepage">Admin</a>
@@ -96,7 +98,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           required
                                            placeholder="Indtast password">
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-2">Login</button>
@@ -104,7 +107,6 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/fc/registerpage">Ikke
                                 registeret endnu?</a>
-                            <!--<a class="dropdown-item" href="#">Forgot password?</a>-->
                         </div>
                     </div>
                 </c:if>
@@ -112,17 +114,18 @@
             </c:if>
         </header>
         <div id="body" class="jumbotron-fluid" style="min-height: 20vh;">
-
             <!--  <div id="body" class="container" style="min-height: 20vh;"> -->
             <jsp:doBody/>
-        </div>
 
+
+        </div>
 
         <!-- Footer -->
         <div class="container">
             <br>
             <hr>
             <br>
+            <p align="center"> Olsker cupcakes - Kirkevej 25 - 3770 Olsker - 56951566 - cupper@cupcakes.dk</p>
             <jsp:invoke fragment="footer"/>
         </div>
     </div>
@@ -136,5 +139,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

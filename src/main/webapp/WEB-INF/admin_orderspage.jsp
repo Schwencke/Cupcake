@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Orders Page
+         Admin side over ordre
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -49,6 +49,6 @@
             </table>
         </form>
 
-        <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>
 </t:genericpage>

@@ -7,6 +7,7 @@ import business.exceptions.UserException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 public class LoginCommand extends CommandUnprotectedPage {
     private UserFacade userFacade;
@@ -40,9 +41,10 @@ public class LoginCommand extends CommandUnprotectedPage {
                 session.invalidate();
                 request.setAttribute("error", "Wrong username or password!");
                 pageToShow = "loginpage";
+                throw new UserException("Wrong username or password");
             }
             return REDIRECT_INDICATOR + pageToShow;
-        } catch (UserException ex) {
+        } catch (UserException | SQLException ex) {
             request.setAttribute("error", "Wrong username or password!");
             return "loginpage";
         }

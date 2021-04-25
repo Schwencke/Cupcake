@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Login Page
+         Login side
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -36,8 +36,6 @@
                 </c:if>
                 <button class="btn btn-primary" type="submit" value="Login">Sign in</button>
             </form>
-
-
         </div>
     </jsp:body>
 </t:genericpage>

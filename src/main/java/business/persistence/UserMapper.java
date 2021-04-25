@@ -52,7 +52,7 @@ public class UserMapper {
         }
     }
 
-    public User login(String email, String password) throws UserException {
+    public User login(String email, String password) throws UserException, SQLException {
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM `user` WHERE `email` = ? AND `password` = ?";
             User user = new User();
@@ -85,16 +85,16 @@ public class UserMapper {
             try (PreparedStatement ps2 = connection.prepareStatement(sql2)) {
                 ps2.setInt(1, user.getRoleId());
                 ResultSet rs2 = ps2.executeQuery();
-                while (rs2.next()) {
+                if (rs2.next()) {
                     String name = rs2.getString("name");
                     user.setRole(name);
+                    return user;
+                } else {
+                    throw new UserException("Could not validate user");
                 }
-                return user;
             } catch (SQLException ex) {
-                throw new UserException(ex.getMessage());
+                throw new UserException("Connection to database could not be established");
             }
-        } catch (SQLException ex) {
-            throw new UserException("Connection to database could not be established");
         }
     }
 

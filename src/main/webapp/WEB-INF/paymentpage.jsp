@@ -4,13 +4,13 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Payment Page
+         Betaling gennemført
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
-        Payment success. - Enjoy your cupcakes!
+        Betalingen er gennemført. - Nyd dine cupcakes!
     </jsp:body>
 
 </t:genericpage>

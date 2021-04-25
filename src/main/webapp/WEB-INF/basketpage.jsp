@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Basket Page
+         Kurv
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -25,8 +25,8 @@
                 <form action="${pageContext.request.contextPath}/fc/removefrombasketcommand">
                     <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
                         <tr>
-                            <td>${orderline.topping}</td>
                             <td>${orderline.bottom}</td>
+                            <td>${orderline.topping}</td>
                             <td>${orderline.amount}</td>
                             <td>${orderline.price},-</td>
                             <td>${orderline.amount * orderline.price},-</td>
@@ -46,7 +46,7 @@
             </table>
         </c:if>
 
-        <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
-        <a href="${pageContext.request.contextPath}/fc/checkoutpage">Til betaling</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/checkoutpage">Til betaling</a>
     </jsp:body>
 </t:genericpage>

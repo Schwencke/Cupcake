@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Checkout Page
+         Checkout
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -32,8 +32,8 @@
                 <td>Total pris: ${sessionScope.pricetotal},-</td>
             </tr>
         </table>
-        <a href="${pageContext.request.contextPath}/fc/basketpage">Fortryd</a>
-        <a href="${pageContext.request.contextPath}/fc/paymentpage">Betal</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/basketpage">Fortryd</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/paymentpage">Betal</a>
 
         <c:if test="${requestScope.error != null }">
             <p style="color:red">
