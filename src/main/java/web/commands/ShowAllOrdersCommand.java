@@ -23,12 +23,15 @@ public class ShowAllOrdersCommand extends CommandProtectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        int delete = Integer.parseInt(request.getParameter("delete"));
 
-        if (delete != 0) {
-            orderFacade.updateStatus(delete, 3);
+        String param = request.getParameter("delete");
+        if (param != null) {
+            int delete = Integer.parseInt(param);
+
+            if (delete != 0) {
+                orderFacade.updateStatus(delete, 3);
+            }
         }
-
         int userId = Integer.parseInt(request.getParameter("user_id"));
         orderList = orderFacade.getAllOrdersById(userId);
         session.setAttribute("orderlist", orderList);
