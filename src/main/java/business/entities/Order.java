@@ -51,23 +51,11 @@ public class Order {
         return priceTotal;
     }
 
-    public void setPriceTotal(int priceTotal) {
-        this.priceTotal = priceTotal;
-    }
-
     public int getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
-    }
-
     public Timestamp getCreated() {
         return created;
-    }
-
-    public void setCreated(Timestamp created) {
-        this.created = created;
     }
 }

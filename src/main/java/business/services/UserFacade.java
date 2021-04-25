@@ -31,7 +31,7 @@ public class UserFacade {
         return userMapper.getBalance(userId);
     }
 
-    public int updateBalance(int userId, int balance) throws UserException {
-        return userMapper.updateBalance(userId, balance);
+    public void updateBalance(int userId, int balance) throws UserException {
+        userMapper.updateBalance(userId, balance);
     }
 }

@@ -56,7 +56,7 @@ public class OrderMapper {
         }
     }
 
-    public void updateStatus(int orderId, int statusId) throws UserException{
+    public void updateStatus(int orderId, int statusId) throws UserException {
 
         try (Connection connection = database.connect()) {
             String sql = "UPDATE `order` SET `status_id`=? WHERE `order_id`=?";
@@ -139,7 +139,7 @@ public class OrderMapper {
                     int toppingId = rs.getInt("topping");
                     orderLineList.add(new OrderLine(orderId, bottomId, toppingId, quantity));
                 }
-                return  orderLineList;
+                return orderLineList;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }

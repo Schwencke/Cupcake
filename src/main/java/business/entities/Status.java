@@ -2,26 +2,14 @@ package business.entities;
 
 public class Status {
     int statusId;
-    String status;
+    String name;
 
-    public Status(int statusId, String status) {
+    public Status(int statusId, String name) {
         this.statusId = statusId;
-        this.status = status;
+        this.name = name;
     }
 
-    public int getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public String getName() {
+        return name;
     }
 }

@@ -2,7 +2,6 @@ package business.persistence;
 
 import business.entities.Bottom;
 import business.entities.Topping;
-import business.entities.User;
 import business.exceptions.UserException;
 
 import java.sql.*;

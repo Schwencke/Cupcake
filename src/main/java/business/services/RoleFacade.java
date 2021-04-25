@@ -1,11 +1,9 @@
 package business.services;
 
 import business.entities.Role;
-import business.entities.Status;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.RoleMapper;
-import business.persistence.StatusMapper;
 
 import java.util.List;
 

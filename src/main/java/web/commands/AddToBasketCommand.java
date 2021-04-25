@@ -39,7 +39,7 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
             orderLineList = new ArrayList<>();
             orderLineId = 0;
         }
-        orderLineId ++;
+        orderLineId++;
         orderLineList.add(new OrderLine(orderLineId, bottom, bottomId, topping, toppingId, price, amount));
 
         int priceTotal = 0;

@@ -30,7 +30,7 @@
                     <td><input type="hidden" name="user_id" value="${orderlist.userId}">${orderlist.userId}</td>
                     <td>${orderlist.priceTotal}</td>
                     <td>${orderlist.created}</td>
-                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
+                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).name}</td>
                     <c:if test="${orderlist.statusId == 1}">
                     <td><button type="submit" name="delete"  value="${orderlist.orderId}">Slet ordre</button></td>
                     </c:if>

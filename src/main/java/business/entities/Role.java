@@ -9,14 +9,6 @@ public class Role {
         this.role = role;
     }
 
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
     public String getRole() {
         return role;
     }

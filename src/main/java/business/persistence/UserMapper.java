@@ -132,17 +132,16 @@ public class UserMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int balance = rs.getInt("balance");
-                    return balance;
+                if (rs.next()) {
+                    return rs.getInt("balance");
                 }
+                return 0;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
         } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
-        return 0;
     }
 
     public int updateBalance(int userId, int balance) throws UserException {
@@ -152,8 +151,7 @@ public class UserMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, balance);
                 ps.setInt(2, userId);
-                int rowsInserted = ps.executeUpdate();
-                return rowsInserted;
+                return ps.executeUpdate();
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }

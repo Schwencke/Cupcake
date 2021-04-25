@@ -22,7 +22,7 @@
                     <td>${orderlist.orderId}</td>
                     <td>${orderlist.priceTotal},-</td>
                     <td>${orderlist.created}</td>
-                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).status}</td>
+                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).name}</td>
                 </tr>
             </c:forEach>
             <tr>

@@ -1,7 +1,6 @@
 package business.persistence;
 
 import business.entities.Role;
-import business.entities.Status;
 import business.exceptions.UserException;
 
 import java.sql.Connection;

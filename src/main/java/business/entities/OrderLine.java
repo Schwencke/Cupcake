@@ -20,7 +20,6 @@ public class OrderLine {
         this.amount = amount;
     }
 
-
     public OrderLine(int orderId, int bottomId, int toppingId, int amount) {
         this.orderId = orderId;
         this.bottomId = bottomId;
@@ -32,24 +31,12 @@ public class OrderLine {
         return orderLineId;
     }
 
-    public void setOrderLineId(int orderLineId) {
-        this.orderLineId = orderLineId;
-    }
-
     public int getBottomId() {
         return bottomId;
     }
 
-    public void setBottomId(int bottomId) {
-        this.bottomId = bottomId;
-    }
-
     public int getToppingId() {
         return toppingId;
-    }
-
-    public void setToppingId(int toppingId) {
-        this.toppingId = toppingId;
     }
 
     public String getTopping() {
