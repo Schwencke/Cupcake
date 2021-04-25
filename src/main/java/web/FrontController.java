@@ -9,19 +9,20 @@ import business.persistence.Database;
 import business.services.CakeFacade;
 import business.services.RoleFacade;
 import business.services.StatusFacade;
-import web.commands.*;
+import web.commands.Command;
+import web.commands.CommandUnknown;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet {
@@ -71,7 +72,7 @@ public class FrontController extends HttpServlet {
         application.setAttribute("statuslist", statusList);
 
         RoleFacade roleFacade = new RoleFacade(database);
-        List<Role> roleList ;
+        List<Role> roleList;
         try {
             roleList = roleFacade.getAllRoles();
         } catch (UserException ex) {

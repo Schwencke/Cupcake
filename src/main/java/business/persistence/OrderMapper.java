@@ -73,7 +73,6 @@ public class OrderMapper {
         }
     }
 
-
     public List<Order> getAllOrders() throws UserException {
         List<Order> orderList = new ArrayList<>();
 
@@ -147,6 +146,4 @@ public class OrderMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
-
-
 }

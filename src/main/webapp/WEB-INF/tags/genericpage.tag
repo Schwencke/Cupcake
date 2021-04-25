@@ -21,7 +21,7 @@
 </head>
 <div class="container-fluid">
     <div class="jumbotron-fluid bg-light">
-        <!-- <img src="${pageContext.request.contextPath}/images/Background.jpg" class="img-fluid"> -->
+        <!-- <img src="${pageContext.request.contextPath}/images/cupcakes.jpg" class="img-fluid"> -->
 
         <!--
             This header is inspired by this bootstrap
@@ -64,9 +64,9 @@
                 <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
 
                 <c:if test="${sessionScope.user != null }">
-                <c:if test="${sessionScope.role == 'customer' }">
-                    Saldo: ${sessionScope.user.balance},-
-                </c:if>
+                    <c:if test="${sessionScope.role == 'customer' }">
+                        Saldo: ${sessionScope.user.balance},-
+                    </c:if>
                     ${sessionScope.user.email}
                 </c:if>
 

@@ -1,9 +1,8 @@
 package web.commands;
 
 import business.entities.User;
-import business.persistence.Database;
-import business.services.UserFacade;
 import business.exceptions.UserException;
+import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

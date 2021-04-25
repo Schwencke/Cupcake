@@ -17,5 +17,4 @@ public class StatusFacade {
     public List<Status> getAllStatus() throws UserException {
         return statusMapper.getAllStatus();
     }
-
 }

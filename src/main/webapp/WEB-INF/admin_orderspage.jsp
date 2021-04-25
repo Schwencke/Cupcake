@@ -15,32 +15,39 @@
             <button type="submit">Søg</button>
 
 
-        <table class="table table-striped">
-            <thead>
-            <th>Ordre nr.</th>
-            <th>Bruger ID</th>
-            <th>Pris</th>
-            <th>Oprettet</th>
-            <th>Status</th>
-            </thead>
-            <c:forEach var="orderlist" items="${sessionScope.orderlist}">
-                <c:if test="${orderlist.statusId != 3}">
-                <tr>
-                    <td>${orderlist.orderId}</td>
-                    <td><input type="hidden" name="user_id" value="${orderlist.userId}">${orderlist.userId}</td>
-                    <td>${orderlist.priceTotal}</td>
-                    <td>${orderlist.created}</td>
-                    <td>${applicationScope.statuslist.get(orderlist.statusId-1).name}</td>
-                    <c:if test="${orderlist.statusId == 1}">
-                    <td><button type="submit" name="delete"  value="${orderlist.orderId}">Slet ordre</button></td>
+            <table class="table table-striped">
+                <thead>
+                <th>Ordre nr.</th>
+                <th>Bruger ID</th>
+                <th>Pris</th>
+                <th>Oprettet</th>
+                <th>Status</th>
+                </thead>
+                <c:forEach var="orderlist" items="${sessionScope.orderlist}">
+                    <c:if test="${orderlist.statusId != 3}">
+                        <tr>
+                            <td>${orderlist.orderId}</td>
+                            <td><input type="hidden" name="user_id" value="${orderlist.userId}">${orderlist.userId}</td>
+                            <td>${orderlist.priceTotal}</td>
+                            <td>${orderlist.created}</td>
+                            <td>${applicationScope.statuslist.get(orderlist.statusId-1).name}</td>
+                            <c:if test="${orderlist.statusId == 1}">
+                                <td>
+                                    <button type="submit" name="delete" value="${orderlist.orderId}">Slet ordre</button>
+                                </td>
+                            </c:if>
+                            <c:if test="${orderlist.statusId == 2}">
+                                <td>
+                                    <button type="submit" name="delete" disabled value="${orderlist.orderId}">Slet
+                                        ordre
+                                    </button>
+                                </td>
+                            </c:if>
+                        </tr>
                     </c:if>
-                    <c:if test="${orderlist.statusId == 2}">
-                        <td><button type="submit" name="delete" disabled value="${orderlist.orderId}">Slet ordre</button></td>
-                    </c:if>
-                </tr>
-                </c:if>
-            </c:forEach>
-        </table></form>
+                </c:forEach>
+            </table>
+        </form>
 
         <a href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
     </jsp:body>

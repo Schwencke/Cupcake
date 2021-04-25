@@ -14,34 +14,36 @@
             <h1>Kurven er tom</h1>
         </c:if>
         <c:if test="${sessionScope.orderlinecount > 0}">
-        <table class="table table-striped">
-            <thead>
-            <th>Bund</th>
-            <th>Topping</th>
-            <th>Antal</th>
-            <th>Stk pris</th>
-            <th>Samlet pris</th>
-            </thead>
-            <form action="${pageContext.request.contextPath}/fc/removefrombasketcommand">
-            <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
+            <table class="table table-striped">
+                <thead>
+                <th>Bund</th>
+                <th>Topping</th>
+                <th>Antal</th>
+                <th>Stk pris</th>
+                <th>Samlet pris</th>
+                </thead>
+                <form action="${pageContext.request.contextPath}/fc/removefrombasketcommand">
+                    <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
+                        <tr>
+                            <td>${orderline.topping}</td>
+                            <td>${orderline.bottom}</td>
+                            <td>${orderline.amount}</td>
+                            <td>${orderline.price},-</td>
+                            <td>${orderline.amount * orderline.price},-</td>
+                            <td>
+                                <button type="submit" name="delete" value="${orderline.orderLineId}">Slet</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </form>
                 <tr>
-                    <td>${orderline.topping}</td>
-                    <td>${orderline.bottom}</td>
-                    <td>${orderline.amount}</td>
-                    <td>${orderline.price},-</td>
-                    <td>${orderline.amount * orderline.price},-</td>
-                    <td><button type="submit" name="delete" value="${orderline.orderLineId}">Slet</button></td>
+                    <td>Total pris:</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>${sessionScope.pricetotal},-</td>
                 </tr>
-            </c:forEach>
-            </form>
-            <tr>
-                <td>Total pris:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>${sessionScope.pricetotal},-</td>
-            </tr>
-        </table>
+            </table>
         </c:if>
 
         <a href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>

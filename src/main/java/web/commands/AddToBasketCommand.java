@@ -47,7 +47,6 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
             priceTotal += orderLine.getPrice() * orderLine.getAmount();
         }
 
-
         request.getSession().setAttribute("orderlinecount", orderLineList.size());
         request.getSession().setAttribute("pricetotal", priceTotal);
         request.getSession().setAttribute("orderlinelist", orderLineList);

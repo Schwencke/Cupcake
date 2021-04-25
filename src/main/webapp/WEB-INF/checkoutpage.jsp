@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:body>
-         <table class="table table-striped">
+        <table class="table table-striped">
             <thead>
             <th>Bund</th>
             <th>Topping</th>

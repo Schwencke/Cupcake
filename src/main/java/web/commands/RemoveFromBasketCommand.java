@@ -12,6 +12,7 @@ public class RemoveFromBasketCommand extends CommandUnprotectedPage {
 
     protected CakeMapper cakeMapper;
     List<OrderLine> orderLineList;
+
     public RemoveFromBasketCommand(String pageToShow) {
         super(pageToShow);
         this.cakeMapper = new CakeMapper(database);

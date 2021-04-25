@@ -1,7 +1,6 @@
 package web.commands;
 
 import business.entities.Order;
-import business.entities.OrderLine;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.OrderFacade;

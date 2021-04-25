@@ -17,7 +17,8 @@
         <br>
         <br>
 
-        <h2><a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Gå til forsiden for at bestille vores dejlige cupcakes</a></h2>
+        <h2><a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Gå til forsiden for at bestille vores
+            dejlige cupcakes</a></h2>
     </jsp:body>
 
 </t:genericpage>

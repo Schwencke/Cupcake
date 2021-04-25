@@ -2,12 +2,9 @@ package web.commands;
 
 
 import business.entities.Order;
-import business.entities.User;
 import business.exceptions.UserException;
-import business.persistence.OrderMapper;
 import business.services.OrderFacade;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,7 +25,7 @@ public class ShowAllOrdersCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         int delete = Integer.parseInt(request.getParameter("delete"));
 
-        if(delete != 0){
+        if (delete != 0) {
             orderFacade.updateStatus(delete, 3);
         }
 
