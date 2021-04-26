@@ -37,13 +37,13 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
         bottomList = (List<Bottom>) application.getAttribute("bottomlist");
         toppingList = (List<Topping>) application.getAttribute("toppinglist");
 
-        int bottomId = Integer.parseInt(bottom)-1;
-        int toppingId = Integer.parseInt(topping)-1;
+        int bottomId = Integer.parseInt(bottom);
+        int toppingId = Integer.parseInt(topping);
 
-        bottom = bottomList.get(bottomId).getFlavor();
-        topping = toppingList.get(toppingId).getFlavor();
+        bottom = bottomList.get(bottomId-1).getFlavor();
+        topping = toppingList.get(toppingId-1).getFlavor();
 
-        int price = bottomList.get(bottomId).getPrice() + toppingList.get(toppingId).getPrice();
+        int price = bottomList.get(bottomId-1).getPrice() + toppingList.get(toppingId-1).getPrice();
         int amount = Integer.parseInt(request.getParameter("amount"));
 
         if (orderLineList == null) {
