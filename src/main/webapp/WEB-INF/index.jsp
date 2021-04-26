@@ -28,7 +28,7 @@
                     <label class="form-check-label" for="bottom_id">Bund</label><br>
                     <select class="form-control" name="bottom" id="bottom_id">
                         <c:forEach var="bottom" items="${applicationScope.bottomlist}">
-                            <option value="${bottom.flavor},${bottom.price},${bottom.bottomId}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
+                            <option value="${bottom.bottomId}">${bottom.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${bottom.price},-)</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -36,7 +36,7 @@
                     <label class="form-check-label" for="topping_id">Topping</label><br>
                     <select class="form-control" name="topping" id="topping_id">
                         <c:forEach var="topping" items="${applicationScope.toppinglist}">
-                            <option value="${topping.flavor},${topping.price},${topping.toppingId}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
+                            <option value="${topping.toppingId}">${topping.flavor}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pris: ${topping.price},-)</option>
                         </c:forEach>
                     </select>
                 </div>
