@@ -11,8 +11,8 @@
     <jsp:body>
 
 <div class="row justify-content-center align-content-center">
-    <div class="col-sm-8 m-0 p-0 col-md-8 m-0 p-0 col-lg-8 m-0 p-0">
-        <table class="table table-striped table-responsive">
+    <div class="col-sm-8 m-0 p-0 col-md-8 m-0 p-0 col-lg-8 m-0 p-0 tableoverflow">
+        <table class="table table-striped">
             <thead>
             <th>ID</th>
             <th>Rolle</th>
