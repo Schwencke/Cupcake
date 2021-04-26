@@ -16,6 +16,8 @@ import java.util.List;
 public class AddToBasketCommand extends CommandUnprotectedPage {
     protected CakeMapper cakeMapper;
     List<OrderLine> orderLineList;
+    List<Bottom> bottomList;
+    List<Topping> toppingList;
     int orderLineId;
 
     public AddToBasketCommand(String pageToShow) {
@@ -26,15 +28,14 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        ServletContext application = request.getServletContext();
 
         orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
-
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
 
-        List<Bottom> bottomList = (List<Bottom>) application.getAttribute("bottomlist");
-        List<Topping> toppingList = (List<Topping>) application.getAttribute("toppinglist");
+        ServletContext application = request.getServletContext();
+        bottomList = (List<Bottom>) application.getAttribute("bottomlist");
+        toppingList = (List<Topping>) application.getAttribute("toppinglist");
 
         int bottomId = Integer.parseInt(bottom)-1;
         int toppingId = Integer.parseInt(topping)-1;
