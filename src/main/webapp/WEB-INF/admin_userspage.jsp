@@ -31,7 +31,7 @@
                         <td>${user.firstname}</td>
                         <td>${user.lastname}</td>
                         <td>${user.phoneNo}</td>
-                        <td><input name="user_balance" value="${user.balance} ,-"></td>
+                        <td><input name="user_balance" value="${user.balance}">,-</td>
                         <td>${user.email}</td>
                         <td>
                             <button type="submit">Opdater</button>
