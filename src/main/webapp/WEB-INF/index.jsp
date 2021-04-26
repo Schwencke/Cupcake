@@ -23,7 +23,7 @@
         </div>
         <div class="row justify-content-center">
         <div class="col-sm-6">
-            <form method="post" action="${pageContext.request.contextPath}/fc/addtobasketcommand">
+            <form action="${pageContext.request.contextPath}/fc/addtobasketcommand" method="post">
                 <div class="form-group mt-2">
                     <label class="form-check-label" for="bottom_id">Bund</label><br>
                     <select class="form-control" name="bottom" id="bottom_id">

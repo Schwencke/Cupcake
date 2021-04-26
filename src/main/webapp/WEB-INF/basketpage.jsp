@@ -29,7 +29,7 @@
                 <th>Stk pris</th>
                 <th>Samlet pris</th>
                 </thead>
-                <form action="${pageContext.request.contextPath}/fc/removefrombasketcommand">
+                <form action="${pageContext.request.contextPath}/fc/removefrombasketcommand" method="post">
                     <c:forEach var="orderline" items="${sessionScope.orderlinelist}">
                         <tr>
                             <td>${orderline.bottom}</td>

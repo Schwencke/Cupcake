@@ -13,7 +13,7 @@
         <div class="row mt-5">
         <div class="col-lg-3"></div>
         <div class="col-lg-6 justify-content-center">
-            <form name="login" action="${pageContext.request.contextPath}/fc/registercommand" method="POST">
+            <form name="login" action="${pageContext.request.contextPath}/fc/registercommand"  method="post">
 
                 <div class="row mt-5">
                     <div class="col">

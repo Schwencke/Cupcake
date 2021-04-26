@@ -25,7 +25,7 @@
             </thead>
             <c:forEach var="user" items="${sessionScope.userlist}">
                 <tr>
-                    <form action="${pageContext.request.contextPath}/fc/balanceupdate">
+                    <form action="${pageContext.request.contextPath}/fc/balanceupdate" method="post">
                         <td><input type="hidden" name="user_id" value="${user.userId}">${user.userId}</td>
                         <td>${applicationScope.rolelist.get(user.roleId-1).role}</td>
                         <td>${user.firstname}</td>
