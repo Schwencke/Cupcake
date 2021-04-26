@@ -9,7 +9,10 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <table class="table table-striped">
+
+<div class="row justify-content-center align-content-center">
+    <div class="col-sm-8 m-0 p-0 col-md-8 m-0 p-0 col-lg-8 m-0 p-0">
+        <table class="table table-striped table-responsive">
             <thead>
             <th>ID</th>
             <th>Rolle</th>
@@ -28,7 +31,7 @@
                         <td>${user.firstname}</td>
                         <td>${user.lastname}</td>
                         <td>${user.phoneNo}</td>
-                        <td><input name="user_balance" value="${user.balance}">,-</td>
+                        <td><input name="user_balance" value="${user.balance} ,-"></td>
                         <td>${user.email}</td>
                         <td>
                             <button type="submit">Opdater</button>
@@ -37,11 +40,19 @@
                 </tr>
             </c:forEach>
         </table>
+    </div>
+</div>
         <c:if test="${requestScope.msg != null }">
             <p style="color:green">
                     ${requestScope.msg}
             </p>
         </c:if>
+        <div class="row">
+            <div class="col-5 p-0 m-0"></div>
+            <div class="col-2 p-0 m-0 text-center">
         <a class="nav-link" href="${pageContext.request.contextPath}/fc/employeepage">Gå tilbage</a>
+        </div>
+        <div class="col-5 p-0 m-0"></div>
+        </div>
     </jsp:body>
 </t:genericpage>
