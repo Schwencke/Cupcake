@@ -33,9 +33,8 @@ public class RemoveFromBasketCommand extends CommandUnprotectedPage {
         }
 
         session.setAttribute("orderlinelist", orderLineList);
-        request.getSession().setAttribute("orderlinecount", orderLineList.size());
-        request.getSession().setAttribute("pricetotal", priceTotal);
-
+        session.setAttribute("orderlinecount", orderLineList.size());
+        session.setAttribute("pricetotal", priceTotal);
 
         return pageToShow;
     }

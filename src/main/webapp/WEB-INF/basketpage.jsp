@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <c:if test="${sessionScope.orderlinecount == null}">
+        <c:if test="${sessionScope.orderlinecount == 0}">
             <div class="row">
                 <div class="col text-center">
             <h1>Kurven er tom</h1>
@@ -59,7 +59,7 @@
         <div class="col-sm-1 col-md-2 col-lg-3"></div>
         </div>
         </c:if>
-        <c:if test="${sessionScope.orderlinecount == null}">
+        <c:if test="${sessionScope.orderlinecount == 0}">
             <div class="row">
             <div class="col text-center">
         <a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Tilbage til forsiden</a>
