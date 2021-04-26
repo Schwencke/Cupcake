@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-
 public class PaymentCommand extends CommandProtectedPage {
 
     private UserFacade userFacade;
