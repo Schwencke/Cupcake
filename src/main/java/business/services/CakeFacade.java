@@ -15,11 +15,11 @@ public class CakeFacade {
         this.cakeMapper = new CakeMapper(database);
     }
 
-    public List<Topping> getAllToppings() throws UserException {
-        return cakeMapper.getAllToppings();
-    }
-
     public List<Bottom> getAllBottoms() throws UserException {
         return cakeMapper.getAllBottoms();
+    }
+
+    public List<Topping> getAllToppings() throws UserException {
+        return cakeMapper.getAllToppings();
     }
 }
