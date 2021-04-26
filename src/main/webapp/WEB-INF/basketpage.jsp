@@ -10,8 +10,12 @@
     </jsp:attribute>
 
     <jsp:body>
-        <c:if test="${sessionScope.orderlinecount == 0}">
+        <c:if test="${sessionScope.orderlinecount == null}">
+            <div class="row">
+                <div class="col text-center">
             <h1>Kurven er tom</h1>
+                </div>
+            </div>
         </c:if>
         <c:if test="${sessionScope.orderlinecount > 0}">
             <div class="row">
@@ -47,12 +51,19 @@
                     <td>${sessionScope.pricetotal},-</td>
                 </tr>
             </table>
-        </c:if>
+
 
         <a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Bestil mere</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/fc/checkoutpage">Til betaling</a>
         </div>
         <div class="col-sm-1 col-md-2 col-lg-3"></div>
         </div>
+        </c:if>
+        <c:if test="${sessionScope.orderlinecount == null}">
+            <div class="row">
+            <div class="col text-center">
+        <a class="nav-link" href="${pageContext.request.contextPath}/fc/index">Tilbage til forsiden</a>
+            </div></div>
+        </c:if>
     </jsp:body>
 </t:genericpage>
