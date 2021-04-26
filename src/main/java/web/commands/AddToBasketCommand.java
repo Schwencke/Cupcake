@@ -1,8 +1,12 @@
 package web.commands;
 
+import business.entities.Bottom;
 import business.entities.OrderLine;
+import business.entities.Topping;
+import business.exceptions.UserException;
 import business.persistence.CakeMapper;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,6 +16,8 @@ import java.util.List;
 public class AddToBasketCommand extends CommandUnprotectedPage {
     protected CakeMapper cakeMapper;
     List<OrderLine> orderLineList;
+    List<Bottom> bottomList;
+    List<Topping> toppingList;
     int orderLineId;
 
     public AddToBasketCommand(String pageToShow) {
@@ -20,19 +26,24 @@ public class AddToBasketCommand extends CommandUnprotectedPage {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
 
+        orderLineList = (List<OrderLine>) session.getAttribute("orderlinelist");
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
-        String[] bottomArray = bottom.split(",");
-        String[] toppingArray = topping.split(",");
-        int price = Integer.parseInt(bottomArray[1]) + Integer.parseInt(toppingArray[1]);
-        int bottomId = Integer.parseInt(bottomArray[2]);
-        int toppingId = Integer.parseInt(toppingArray[2]);
-        bottom = bottomArray[0];
-        topping = toppingArray[0];
+
+        ServletContext application = request.getServletContext();
+        bottomList = (List<Bottom>) application.getAttribute("bottomlist");
+        toppingList = (List<Topping>) application.getAttribute("toppinglist");
+
+        int bottomId = Integer.parseInt(bottom)-1;
+        int toppingId = Integer.parseInt(topping)-1;
+
+        bottom = bottomList.get(bottomId).getFlavor();
+        topping = toppingList.get(toppingId).getFlavor();
+
+        int price = bottomList.get(bottomId).getPrice() + toppingList.get(toppingId).getPrice();
         int amount = Integer.parseInt(request.getParameter("amount"));
 
         if (orderLineList == null) {
